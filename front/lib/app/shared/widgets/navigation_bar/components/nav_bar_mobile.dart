@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:good_hack/app/app_controller.dart';
 import 'package:good_hack/app/shared/widgets/navigation_bar/models/nav_bar_logo.dart';
+
+import '../../../../app_controller.dart';
 
 class NavBarMobile extends StatelessWidget {
   @override
@@ -23,11 +24,12 @@ class NavBarMobile extends StatelessWidget {
                 size: 30.0,
               ),
               onTap: () {
-                if (Modular.actualRoute == '/loja/') {
-                  print('dasdd');
+                print(Modular.actualRoute);
+
+                if (Modular.actualRoute.contains('/loja')) {
                   Modular.get<AppController>().openS();
-                } //else
-                //Modular.get<AppController>().open();
+                } else
+                  Modular.get<AppController>().open();
               },
             ),
           ),

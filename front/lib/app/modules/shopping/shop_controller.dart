@@ -3,6 +3,4 @@ part 'shop_controller.g.dart';
 
 class ShopController = _ShopControllerBase with _$ShopController;
 
-abstract class _ShopControllerBase with Store {
-  
-}
+abstract class _ShopControllerBase with Store {}

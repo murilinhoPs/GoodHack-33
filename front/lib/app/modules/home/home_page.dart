@@ -24,7 +24,7 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
   Widget build(BuildContext context) {
     return ResponsiveBuilder(
       builder: (context, size) => Scaffold(
-        key: Modular.get<AppController>().scaffoldKey,
+        key: Modular.get<AppController>().scaffoldKeyH,
         drawer: size.isMobile ? NavDrawer() : null,
         appBar: PreferredSize(
           preferredSize: Size.fromHeight(125.0),
@@ -36,7 +36,10 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
         ),
         body: CenteredView(
           newPadding: const EdgeInsets.symmetric(horizontal: 15, vertical: 1.0),
-          child: Column(
+          child: ListView(
+            primary: true,
+            shrinkWrap: true,
+            physics: BouncingScrollPhysics(),
             children: <Widget>[
               HomeDetails(),
               Markets(),

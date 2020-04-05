@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:good_hack/app/shared/widgets/navigation_bar/components/drawer/drawer_header.dart';
 import 'package:good_hack/app/shared/widgets/navigation_bar/components/drawer/drawer_items.dart';
 
@@ -16,12 +17,20 @@ class NavDrawer extends StatelessWidget {
       child: Column(
         children: <Widget>[
           NavDrawerHeader(),
-          DrawerItem(title: 'Início', icon: Icons.home, click: () {}),
+          DrawerItem(
+              title: 'Início',
+              icon: Icons.home,
+              click: () {
+                if (Modular.actualRoute != "/")
+                  Modular.to.pushReplacementNamed('/');
+                // Navigator.pushNamed(context, '/');
+              }),
           DrawerItem(
             title: 'Sacola',
             icon: Icons.shopping_basket,
             click: () {
-              Navigator.pushNamed(context, '/loja/Padaria');
+              if (Modular.actualRoute == "/")
+                Navigator.pushNamed(context, '/loja/Padaria');
             },
           ),
           DrawerItem(title: 'Outro', icon: Icons.android, click: () {})

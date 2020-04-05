@@ -12,6 +12,10 @@ class ShopModule extends ChildModule {
 
   @override
   List<Router> get routers => [
+        // Router(
+        //   Modular.initialRoute,
+        //   child: (_, args) => HomePage(),
+        // ),
         Router(
           '/loja/:id',
           child: (_, args) => ShopPage(id: args.params['id']),

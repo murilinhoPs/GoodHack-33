@@ -6,16 +6,14 @@ part 'app_controller.g.dart';
 class AppController = _AppControllerBase with _$AppController;
 
 abstract class _AppControllerBase with Store {
-  GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
+  GlobalKey<ScaffoldState> scaffoldKeyH = GlobalKey<ScaffoldState>();
+
+  void open() {
+    scaffoldKeyH.currentState.openDrawer();
+  }
 
   GlobalKey<ScaffoldState> scaffoldKeyS = GlobalKey<ScaffoldState>();
 
-  @action
-  void open() {
-    scaffoldKey.currentState.openDrawer();
-  }
-
-  @action
   void openS() {
     scaffoldKeyS.currentState.openDrawer();
   }
