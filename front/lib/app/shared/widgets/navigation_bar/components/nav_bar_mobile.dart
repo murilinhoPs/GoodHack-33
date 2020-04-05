@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:good_hack/app/modules/home/home_controller.dart';
-import 'package:good_hack/app/modules/home/home_page.dart';
 import 'package:good_hack/app/shared/widgets/navigation_bar/models/nav_bar_logo.dart';
 
 class NavBarMobile extends StatelessWidget {
