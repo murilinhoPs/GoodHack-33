@@ -15,15 +15,19 @@ class NavBarDesktop extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
-              NavBarItem('Início'),
+              NavBarItem(title: 'Início', click: () {}),
               SizedBox(
                 width: 15,
               ),
-              NavBarItem('Sacola'),
+              NavBarItem(
+                  title: 'Sacola',
+                  click: () {
+                    Navigator.pushNamed(context, '/loja/Padaria');
+                  }),
               SizedBox(
                 width: 15,
               ),
-              NavBarItem('Outro'),
+              NavBarItem(title: 'Outro', click: () {}),
             ],
           )
         ],

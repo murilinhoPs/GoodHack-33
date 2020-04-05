@@ -22,7 +22,7 @@ class MarketItemDesktop extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           mainAxisSize: MainAxisSize.max,
           children: <Widget>[
-            Text(
+            SelectableText(
               'Nome da Loja',
               style: TextStyle(
                 fontWeight: FontWeight.w800,
@@ -33,28 +33,28 @@ class MarketItemDesktop extends StatelessWidget {
             SizedBox(
               height: 10,
             ),
-            Text(
+            SelectableText(
               'Categoria: ',
               style: TextStyle(
                 height: 1.5,
                 fontSize: descriptionSize,
               ),
             ),
-            Text(
+            SelectableText(
               'Endereço: ',
               style: TextStyle(
                 // height: 1.0,
                 fontSize: descriptionSize,
               ),
             ),
-            Text(
+            SelectableText(
               'Horário de funcionamento: ',
               style: TextStyle(
                 height: 1.5,
                 fontSize: descriptionSize,
               ),
             ),
-            Text(
+            SelectableText(
               'Formas de pagamento: ',
               style: TextStyle(
                 height: 1.5,
@@ -102,7 +102,7 @@ class MarketItemMobile extends StatelessWidget {
             ),
             Column(
               children: <Widget>[
-                Text(
+                SelectableText(
                   'Nome da Loja',
                   style: TextStyle(
                     fontWeight: FontWeight.w800,
@@ -113,31 +113,31 @@ class MarketItemMobile extends StatelessWidget {
                 SizedBox(
                   height: 10,
                 ),
-                Text(
+                SelectableText(
                   'Categoria: ',
                   style: TextStyle(
                     height: 1.0,
                     fontSize: descriptionSize,
                   ),
                 ),
-                Text(
+                SelectableText(
                   'Endereço: ',
                   style: TextStyle(
                     height: 1.0,
                     fontSize: descriptionSize,
                   ),
                 ),
-                Text(
+                SelectableText(
                   'Horário de funcionamento: ',
                   style: TextStyle(
                     height: 1.0,
                     fontSize: descriptionSize,
                   ),
                 ),
-                Text(
+                SelectableText(
                   'Formas de pagamento: ',
                   style: TextStyle(
-                    height: 1.0,
+                    height: 1.2,
                     fontSize: descriptionSize,
                   ),
                 ),

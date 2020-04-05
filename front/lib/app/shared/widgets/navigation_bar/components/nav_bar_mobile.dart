@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:good_hack/app/modules/home/home_controller.dart';
+import 'package:good_hack/app/app_controller.dart';
 import 'package:good_hack/app/shared/widgets/navigation_bar/models/nav_bar_logo.dart';
 
 class NavBarMobile extends StatelessWidget {
@@ -23,7 +23,11 @@ class NavBarMobile extends StatelessWidget {
                 size: 30.0,
               ),
               onTap: () {
-                Modular.get<HomeController>().open();
+                if (Modular.actualRoute == '/loja/') {
+                  print('dasdd');
+                  Modular.get<AppController>().openS();
+                } //else
+                //Modular.get<AppController>().open();
               },
             ),
           ),

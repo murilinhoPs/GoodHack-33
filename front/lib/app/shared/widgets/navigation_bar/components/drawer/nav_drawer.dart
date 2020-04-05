@@ -3,6 +3,8 @@ import 'package:good_hack/app/shared/widgets/navigation_bar/components/drawer/dr
 import 'package:good_hack/app/shared/widgets/navigation_bar/components/drawer/drawer_items.dart';
 
 class NavDrawer extends StatelessWidget {
+  final String sla = 'Padaria';
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -14,9 +16,15 @@ class NavDrawer extends StatelessWidget {
       child: Column(
         children: <Widget>[
           NavDrawerHeader(),
-          DrawerItem('Início', Icons.home),
-          DrawerItem('Sacola', Icons.shopping_basket),
-          DrawerItem('Outro', Icons.android)
+          DrawerItem(title: 'Início', icon: Icons.home, click: () {}),
+          DrawerItem(
+            title: 'Sacola',
+            icon: Icons.shopping_basket,
+            click: () {
+              Navigator.pushNamed(context, '/loja/Padaria');
+            },
+          ),
+          DrawerItem(title: 'Outro', icon: Icons.android, click: () {})
         ],
       ),
     );

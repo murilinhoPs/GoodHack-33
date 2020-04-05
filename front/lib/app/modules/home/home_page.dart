@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:good_hack/app/app_controller.dart';
 import 'package:good_hack/app/modules/home/components/home_details.dart';
 import 'package:good_hack/app/modules/home/components/market_list.dart';
 import 'package:good_hack/app/shared/widgets/centered_view.dart';
@@ -19,13 +20,11 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends ModularState<HomePage, HomeController> {
   //use 'controller' variable to access controller
 
-  final homeController = Modular.get<HomeController>();
-
   @override
   Widget build(BuildContext context) {
     return ResponsiveBuilder(
       builder: (context, size) => Scaffold(
-        key: Modular.get<HomeController>().scaffoldKey,
+        key: Modular.get<AppController>().scaffoldKey,
         drawer: size.isMobile ? NavDrawer() : null,
         appBar: PreferredSize(
           preferredSize: Size.fromHeight(125.0),
