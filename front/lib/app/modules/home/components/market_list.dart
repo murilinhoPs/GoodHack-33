@@ -23,7 +23,7 @@ class Markets extends StatelessWidget {
               'Lojas: ',
               style: TextStyle(
                 fontWeight: FontWeight.w800,
-                height: 0.9,
+                height: 1.2,
                 fontSize: titleSize,
               ),
               textAlign: textAlignment,

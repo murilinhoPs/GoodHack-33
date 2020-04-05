@@ -26,7 +26,7 @@ class MarketItemDesktop extends StatelessWidget {
               'Nome da Loja',
               style: TextStyle(
                 fontWeight: FontWeight.w800,
-                height: 0.9,
+                height: 1.1,
                 fontSize: subtitleSize,
               ),
             ),
@@ -34,30 +34,14 @@ class MarketItemDesktop extends StatelessWidget {
               height: 10,
             ),
             SelectableText(
-              'Categoria: ',
+              '''         
+Categoria: 
+Endereço: 
+Horário de funcionamento: 
+Formas de pagamento: 
+''',
               style: TextStyle(
-                height: 1.5,
-                fontSize: descriptionSize,
-              ),
-            ),
-            SelectableText(
-              'Endereço: ',
-              style: TextStyle(
-                // height: 1.0,
-                fontSize: descriptionSize,
-              ),
-            ),
-            SelectableText(
-              'Horário de funcionamento: ',
-              style: TextStyle(
-                height: 1.5,
-                fontSize: descriptionSize,
-              ),
-            ),
-            SelectableText(
-              'Formas de pagamento: ',
-              style: TextStyle(
-                height: 1.5,
+                height: 1.0,
                 fontSize: descriptionSize,
               ),
             ),
@@ -68,7 +52,7 @@ class MarketItemDesktop extends StatelessWidget {
             'Ir para loja',
             style: TextStyle(
               fontWeight: FontWeight.w800,
-              height: 1.0,
+              height: 1.2,
               fontSize: descriptionSize,
             ),
           ),
@@ -106,7 +90,7 @@ class MarketItemMobile extends StatelessWidget {
                   'Nome da Loja',
                   style: TextStyle(
                     fontWeight: FontWeight.w800,
-                    height: 0.9,
+                    height: 1.1,
                     fontSize: subtitleSize,
                   ),
                 ),
@@ -114,28 +98,10 @@ class MarketItemMobile extends StatelessWidget {
                   height: 10,
                 ),
                 SelectableText(
-                  'Categoria: ',
-                  style: TextStyle(
-                    height: 1.0,
-                    fontSize: descriptionSize,
-                  ),
-                ),
-                SelectableText(
-                  'Endereço: ',
-                  style: TextStyle(
-                    height: 1.0,
-                    fontSize: descriptionSize,
-                  ),
-                ),
-                SelectableText(
-                  'Horário de funcionamento: ',
-                  style: TextStyle(
-                    height: 1.0,
-                    fontSize: descriptionSize,
-                  ),
-                ),
-                SelectableText(
-                  'Formas de pagamento: ',
+                  '''Categoria: 
+Endereço: 
+Horário de funcionamento: 
+Formas de pagamento: ''',
                   style: TextStyle(
                     height: 1.2,
                     fontSize: descriptionSize,

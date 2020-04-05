@@ -30,7 +30,7 @@ class NavDrawer extends StatelessWidget {
             icon: Icons.shopping_basket,
             click: () {
               if (Modular.actualRoute == "/")
-                Navigator.pushNamed(context, '/loja/Padaria');
+                Navigator.pushNamed(context, '/loja/');
             },
           ),
           DrawerItem(title: 'Outro', icon: Icons.android, click: () {})

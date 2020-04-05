@@ -14,6 +14,7 @@ class ShopPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print('ID: $id');
     return ResponsiveBuilder(
       builder: (context, size) => Scaffold(
         key: Modular.get<AppController>().scaffoldKeyS,
@@ -28,7 +29,7 @@ class ShopPage extends StatelessWidget {
         ),
         body: CenteredView(
           newPadding: const EdgeInsets.symmetric(horizontal: 15, vertical: 1.0),
-          child: Text(id),
+          child: id == '' ? Text('Escolha uma loja') : Text(id),
         ),
       ),
     );

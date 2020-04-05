@@ -19,7 +19,10 @@ class AppModule extends MainModule {
           Modular.initialRoute,
           module: HomeModule(),
         ),
-        Router('/loja/:id', module: ShopModule())
+        Router(
+          '/loja/:id',
+          module: ShopModule(),
+        )
       ];
 
   @override
