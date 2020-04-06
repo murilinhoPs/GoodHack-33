@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:good_hack/app/modules/shopping/shop_controller.dart';
+import 'package:good_hack/app/modules/shopping/shop_page.dart';
 import 'package:good_hack/app/shared/widgets/navigation_bar/components/drawer/drawer_header.dart';
 import 'package:good_hack/app/shared/widgets/navigation_bar/components/drawer/drawer_items.dart';
 
@@ -21,16 +23,14 @@ class NavDrawer extends StatelessWidget {
               title: 'Início',
               icon: Icons.home,
               click: () {
-                if (Modular.actualRoute != "/")
-                  Modular.to.pushReplacementNamed('/');
-                // Navigator.pushNamed(context, '/');
+                print('Rota atual: ${Modular.actualRoute}');
+                Modular.to.popUntil(ModalRoute.withName(Modular.initialRoute));
               }),
           DrawerItem(
             title: 'Sacola',
             icon: Icons.shopping_basket,
             click: () {
-              if (Modular.actualRoute == "/")
-                Navigator.pushNamed(context, '/loja/');
+              Modular.to.pushNamed('/loja/ ');
             },
           ),
           DrawerItem(title: 'Outro', icon: Icons.android, click: () {})

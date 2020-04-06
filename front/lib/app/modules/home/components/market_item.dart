@@ -39,7 +39,7 @@ class MarketItemDesktop extends StatelessWidget {
               height: 10,
             ),
             Padding(
-              padding: EdgeInsets.only(left: 25.0),
+              padding: EdgeInsets.symmetric(horizontal: 25.0),
               child: SelectableText(
 //                 '''
 // Categoria:
@@ -47,7 +47,8 @@ class MarketItemDesktop extends StatelessWidget {
 // Horário de funcionamento:
 // Formas de pagamento:
 // ''',
-                body,
+                '''$body''',
+                maxLines: null,
                 style: TextStyle(
                   height: 1.2,
                   fontSize: descriptionSize,
@@ -110,16 +111,21 @@ class MarketItemMobile extends StatelessWidget {
                 SizedBox(
                   height: 10,
                 ),
-                SelectableText(
-                  // '''
-                  // Categoria:
-                  // Endereço:
-                  // Horário de funcionamento:
-                  // Formas de pagamento: ''',
-                  body,
-                  style: TextStyle(
-                    height: 1.3,
-                    fontSize: descriptionSize,
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                  child: SelectableText(
+                    // '''
+                    // Categoria:
+                    // Endereço:
+                    // Horário de funcionamento:
+                    // Formas de pagamento: ''',
+                    '''$body''',
+                    maxLines: null,
+                    textAlign: TextAlign.left,
+                    style: TextStyle(
+                      height: 1.3,
+                      fontSize: descriptionSize,
+                    ),
                   ),
                 ),
               ],

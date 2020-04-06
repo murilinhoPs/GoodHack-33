@@ -8,9 +8,8 @@ import 'package:good_hack/app/shared/services/api_repository.dart';
 class HomeModule extends ChildModule {
   @override
   List<Bind> get binds => [
-// injetar o home repository aqui
-        Bind((i) => HomeController()),
-        //Bind((i) => ApiRepository()),
+        Bind((i) => ApiRepository(i.get<Dio>())),
+        Bind((i) => HomeController(i.get<ApiRepository>())),
       ];
 
   @override
@@ -18,10 +17,6 @@ class HomeModule extends ChildModule {
         Router(
           Modular.initialRoute,
           child: (_, args) => HomePage(),
-        ),
-        Router(
-          '/loja/:id',
-          child: (_, args) => ShopPage(id: args.params['id']),
         ),
       ];
 

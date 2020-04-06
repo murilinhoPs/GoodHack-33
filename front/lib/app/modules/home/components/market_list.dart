@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:good_hack/app/modules/home/components/market_item.dart';
-import 'package:good_hack/app/modules/home/home_controller.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
+import '../home_controller.dart';
+
 class Markets extends StatelessWidget {
-  //final controller = Modular.get<HomeController>();
+  final controller = Modular.get<HomeController>();
 
   Widget build(BuildContext context) {
     return ResponsiveBuilder(builder: (context, size) {
@@ -34,37 +35,45 @@ class Markets extends StatelessWidget {
               textAlign: textAlignment,
             ),
             SizedBox(height: 30),
-            // Observer(
-            //   builder: (_) {
-            //     if (controller.markets == null) {
-            //       return CircularProgressIndicator();
-            //     }
-            //     if (controller.markets.isNotEmpty) {
-            //       final list = controller.markets;
-            //       return ScreenTypeLayout(
-            //         desktop: ListView.builder(
-            //           shrinkWrap: true,
-            //           itemBuilder: (context, index) => MarketItemDesktop(
-            //             descriptionSize,
-            //             subtitleSize,
-            //             title: list[index].title,
-            //             body: list[index].body,
-            //           ),
-            //         ),
-            //         mobile: ListView.builder(
-            //           shrinkWrap: true,
-            //           itemBuilder: (context, index) => MarketItemMobile(
-            //             descriptionSize,
-            //             subtitleSize,
-            //             title: list[index].title,
-            //             body: list[index].body,
-            //           ),
-            //         ),
-            //       );
-            //     } else
-            //       return Text('Nenhum dado....');
-            //   },
-            // ),
+            Observer(
+              builder: (_) {
+                if (controller.markets == null) {
+                  return CircularProgressIndicator();
+                }
+                if (controller.markets.isNotEmpty) {
+                  final list = controller.markets;
+                  return ScreenTypeLayout(
+                    desktop: ListView.builder(
+                      itemCount: controller.markets.length - 90,
+                      shrinkWrap: true,
+                      itemBuilder: (context, index) => Padding(
+                        padding: const EdgeInsets.only(top: 40, bottom: 20),
+                        child: MarketItemDesktop(
+                          descriptionSize,
+                          subtitleSize,
+                          title: list[index].title,
+                          body: list[index].body,
+                        ),
+                      ),
+                    ),
+                    mobile: ListView.builder(
+                      shrinkWrap: true,
+                      itemCount: controller.markets.length - 90,
+                      itemBuilder: (context, index) => Padding(
+                        padding: const EdgeInsets.only(top: 30.0, bottom: 15.0),
+                        child: MarketItemMobile(
+                          descriptionSize,
+                          subtitleSize,
+                          title: list[index].title,
+                          body: list[index].body,
+                        ),
+                      ),
+                    ),
+                  );
+                } else
+                  return Text('Nenhum dado....');
+              },
+            ),
           ],
         ),
       );

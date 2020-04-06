@@ -6,15 +6,21 @@ import 'package:good_hack/app/shared/widgets/navigation_bar/navigation_bar.dart'
 import 'package:responsive_builder/responsive_builder.dart';
 
 import '../../app_controller.dart';
+import 'shop_controller.dart';
 
-class ShopPage extends StatelessWidget {
+class ShopPage extends StatefulWidget {
   final String id;
+  final String title;
 
-  const ShopPage({this.id});
+  ShopPage({Key key, this.title = "Shop", this.id}) : super(key: key);
 
   @override
+  _ShopPageState createState() => _ShopPageState();
+}
+
+class _ShopPageState extends ModularState<ShopPage, ShopController> {
+  @override
   Widget build(BuildContext context) {
-    print('ID: $id');
     return ResponsiveBuilder(
       builder: (context, size) => Scaffold(
         key: Modular.get<AppController>().scaffoldKeyS,
@@ -29,7 +35,7 @@ class ShopPage extends StatelessWidget {
         ),
         body: CenteredView(
           newPadding: const EdgeInsets.symmetric(horizontal: 15, vertical: 1.0),
-          child: id == '' ? Text('Escolha uma loja') : Text(id),
+          child: widget.id == ' ' ? Text('Escolha uma loja') : Text(widget.id),
         ),
       ),
     );

@@ -12,9 +12,9 @@ class AppModule extends MainModule {
         Bind(
           (i) => AppController(),
         ),
-        // Bind(
-        //   (i) => Dio(),
-        // )
+        Bind(
+          (i) => Dio(),
+        ),
       ];
 
   @override
@@ -24,7 +24,7 @@ class AppModule extends MainModule {
           module: HomeModule(),
         ),
         Router(
-          '/loja/:id',
+          '/loja',
           module: ShopModule(),
         )
       ];

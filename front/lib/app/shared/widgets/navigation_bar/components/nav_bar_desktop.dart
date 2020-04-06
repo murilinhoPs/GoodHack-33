@@ -19,8 +19,10 @@ class NavBarDesktop extends StatelessWidget {
               NavBarItem(
                   title: 'Início',
                   click: () {
-                    if (Modular.actualRoute != "/")
-                      Modular.to.pushReplacementNamed('/');
+                    print('Rota atual: ${Modular.actualRoute}');
+
+                    Modular.to
+                        .popUntil(ModalRoute.withName(Modular.initialRoute));
                   }),
               SizedBox(
                 width: 15,
@@ -28,8 +30,7 @@ class NavBarDesktop extends StatelessWidget {
               NavBarItem(
                   title: 'Sacola',
                   click: () {
-                    if (Modular.actualRoute == "/")
-                      Navigator.pushNamed(context, '/loja/');
+                    Modular.to.pushNamed('/loja/ ');
                   }),
               SizedBox(
                 width: 15,

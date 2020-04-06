@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:good_hack/app/app_controller.dart';
 import 'package:good_hack/app/modules/home/components/home_details.dart';
-import 'package:good_hack/app/modules/home/components/market_list.dart';
+import 'package:good_hack/app/modules/shopping/shop_controller.dart';
 import 'package:good_hack/app/shared/widgets/centered_view.dart';
 import 'package:good_hack/app/shared/widgets/navigation_bar/components/drawer/nav_drawer.dart';
 import 'package:good_hack/app/shared/widgets/navigation_bar/navigation_bar.dart';
 import 'package:responsive_builder/responsive_builder.dart';
+import 'components/market_list.dart';
 import 'home_controller.dart';
 
 class HomePage extends StatefulWidget {
@@ -18,11 +19,21 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends ModularState<HomePage, HomeController> {
+  var _appController = Modular.get<AppController>();
+
+  @override
+  void initState() {
+    //print(ShopPage());
+
+    //print(Modular.get<HomeController>());
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return ResponsiveBuilder(
       builder: (context, size) => Scaffold(
-        key: Modular.get<AppController>().scaffoldKeyH,
+        key: _appController.scaffoldKeyH,
         drawer: size.isMobile ? NavDrawer() : null,
         appBar: PreferredSize(
           preferredSize: Size.fromHeight(80.0),
@@ -34,13 +45,13 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
         ),
         body: CenteredView(
           newPadding: const EdgeInsets.symmetric(horizontal: 15, vertical: 1.0),
-          child: Column(
-            // primary: true,
-            // shrinkWrap: true,
-            // physics: BouncingScrollPhysics(),
+          child: ListView(
+            primary: true,
+            shrinkWrap: true,
+            physics: BouncingScrollPhysics(),
             children: <Widget>[
               HomeDetails(),
-              // Markets(),
+              Markets(),
             ],
           ),
         ),
