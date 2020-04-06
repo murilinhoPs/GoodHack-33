@@ -1,4 +1,4 @@
-const Lojas = require("../models/Lojas");
+const Lojas = require('../models/Lojas');
 
 const cadastro = async (req, res) => {
   try {

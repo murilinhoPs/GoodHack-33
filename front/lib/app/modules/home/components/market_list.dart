@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:good_hack/app/modules/home/components/market_item.dart';
+import 'package:good_hack/app/shared/models/markets_model.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
 import '../home_controller.dart';
@@ -37,39 +38,17 @@ class Markets extends StatelessWidget {
             SizedBox(height: 30),
             Observer(
               builder: (_) {
-                if (controller.markets == null) {
+                if (controller.markets.length == 0) {
                   return CircularProgressIndicator();
                 }
                 if (controller.markets.isNotEmpty) {
                   final list = controller.markets;
+                  print(list.length);
                   return ScreenTypeLayout(
-                    desktop: ListView.builder(
-                      itemCount: controller.markets.length - 90,
-                      shrinkWrap: true,
-                      itemBuilder: (context, index) => Padding(
-                        padding: const EdgeInsets.only(top: 40, bottom: 20),
-                        child: MarketItemDesktop(
-                          descriptionSize,
-                          subtitleSize,
-                          title: list[index].title,
-                          body: list[index].body,
-                        ),
-                      ),
-                    ),
-                    mobile: ListView.builder(
-                      shrinkWrap: true,
-                      itemCount: controller.markets.length - 90,
-                      itemBuilder: (context, index) => Padding(
-                        padding: const EdgeInsets.only(top: 30.0, bottom: 15.0),
-                        child: MarketItemMobile(
-                          descriptionSize,
-                          subtitleSize,
-                          title: list[index].title,
-                          body: list[index].body,
-                        ),
-                      ),
-                    ),
-                  );
+                      desktop: _dekstopList(
+                          context, descriptionSize, subtitleSize, list),
+                      mobile: _mobileList(
+                          context, descriptionSize, subtitleSize, list));
                 } else
                   return Text('Nenhum dado....');
               },
@@ -78,5 +57,49 @@ class Markets extends StatelessWidget {
         ),
       );
     });
+  }
+
+  Widget _mobileList(
+      context, descriptionSize, subtitleSize, List<MarketModel> list) {
+    return ListView.builder(
+      shrinkWrap: true,
+      itemCount: list.length,
+      itemBuilder: (context, index) => Padding(
+        padding: const EdgeInsets.only(top: 30.0, bottom: 15.0),
+        child: MarketItemMobile(
+          descriptionSize,
+          subtitleSize,
+          title: list[index].nome,
+          body: '''
+Categoria: ${list[index].categoria}
+Endereço: ${list[index].endereco.rua}, número: ${list[index].endereco.numero}
+Horário de funcionamento: ${list[index].horarioFuncionamento}
+Formas de pagamento: ${list[index].formasDePagamento}
+''',
+        ),
+      ),
+    );
+  }
+
+  Widget _dekstopList(
+      context, descriptionSize, subtitleSize, List<MarketModel> list) {
+    return ListView.builder(
+      shrinkWrap: true,
+      itemCount: list.length,
+      itemBuilder: (context, index) => Padding(
+        padding: const EdgeInsets.only(top: 30.0, bottom: 15.0),
+        child: MarketItemDesktop(
+          descriptionSize,
+          subtitleSize,
+          title: list[index].nome,
+          body: '''
+Categoria: ${list[index].categoria}
+Endereço: ${list[index].endereco.rua}, número: ${list[index].endereco.numero}
+Horário de funcionamento: ${list[index].horarioFuncionamento}
+Formas de pagamento: ${list[index].formasDePagamento}
+''',
+        ),
+      ),
+    );
   }
 }

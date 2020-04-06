@@ -1,5 +1,5 @@
-const sgMail = require("@sendgrid/mail");
-const client = require("twilio")(process.env.ACCOUNTSID, process.env.AUTHTOKEN);
+const sgMail = require('@sendgrid/mail');
+const client = require('twilio')(process.env.ACCOUNTSID, process.env.AUTHTOKEN);
 
 const sendEmail = async (req, res) => {
   try {

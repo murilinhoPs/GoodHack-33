@@ -1,4 +1,4 @@
-const { model, Schema } = require("mongoose");
+const { model, Schema } = require('mongoose');
 
 const LojasSchema = new Schema({
   nome: String,
@@ -13,4 +13,6 @@ const LojasSchema = new Schema({
   formasDePagamento: String,
 });
 
-module.exports = model("Lojas", LojasSchema);
+// Colocar o numero da loja e a url da imagem da loja
+
+module.exports = model('Lojas', LojasSchema);

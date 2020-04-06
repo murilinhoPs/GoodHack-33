@@ -41,12 +41,6 @@ class MarketItemDesktop extends StatelessWidget {
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 25.0),
               child: SelectableText(
-//                 '''
-// Categoria:
-// Endereço:
-// Horário de funcionamento:
-// Formas de pagamento:
-// ''',
                 '''$body''',
                 maxLines: null,
                 style: TextStyle(
@@ -114,11 +108,6 @@ class MarketItemMobile extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 25.0),
                   child: SelectableText(
-                    // '''
-                    // Categoria:
-                    // Endereço:
-                    // Horário de funcionamento:
-                    // Formas de pagamento: ''',
                     '''$body''',
                     maxLines: null,
                     textAlign: TextAlign.left,

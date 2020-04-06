@@ -11,9 +11,12 @@ class NavBarLogo extends StatelessWidget {
         print(Modular.get<AppController>().scaffoldKeyH.currentContext);
       },
       child: SizedBox(
-        height: 30,
-        width: 50,
-        child: Text('Logo'),
+        // height: 300,
+        // width: 50,
+        child: Image.asset(
+          'assets/logo.png',
+          width: 500.0,
+        ),
       ),
     );
   }

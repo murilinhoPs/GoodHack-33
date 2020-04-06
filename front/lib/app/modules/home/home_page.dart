@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:good_hack/app/app_controller.dart';
 import 'package:good_hack/app/modules/home/components/home_details.dart';
-import 'package:good_hack/app/modules/shopping/shop_controller.dart';
 import 'package:good_hack/app/shared/widgets/centered_view.dart';
 import 'package:good_hack/app/shared/widgets/navigation_bar/components/drawer/nav_drawer.dart';
 import 'package:good_hack/app/shared/widgets/navigation_bar/navigation_bar.dart';

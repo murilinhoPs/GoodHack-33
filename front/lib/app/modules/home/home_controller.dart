@@ -1,5 +1,3 @@
-import 'package:flutter_modular/flutter_modular.dart';
-import 'package:good_hack/app/modules/home/home_module.dart';
 import 'package:good_hack/app/modules/shopping/shop_controller.dart';
 import 'package:good_hack/app/modules/shopping/shop_module.dart';
 import 'package:good_hack/app/shared/models/markets_model.dart';
@@ -18,20 +16,22 @@ abstract class _HomeControllerBase with Store {
   }
 
   @observable
-  List<MarketModel> markets;
+  List<MarketModel> markets = [];
 
   @action
   Future fetchMarkets() async {
-    print('dsdddadadad');
+    print('dsdddadadad: ${markets.length}');
     //print(ShopModule.to.get<ShopController>());
     try {
       var response = await _repository.responseGet();
 
       markets = response;
-      print('dsdddadadad22222');
+
+      print('dsd: ${markets.length}');
+
       print(ShopModule.to.get<ShopController>());
     } catch (e) {
-      print(e.message);
+      print('Error Message: ${e.message}');
     }
   }
 }
