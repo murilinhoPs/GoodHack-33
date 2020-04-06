@@ -3,13 +3,16 @@ import 'package:flutter/material.dart';
 class MarketItemDesktop extends StatelessWidget {
   final double descriptionSize;
   final double subtitleSize;
+  final String title;
+  final String body;
 
-  const MarketItemDesktop(this.descriptionSize, this.subtitleSize);
+  const MarketItemDesktop(this.descriptionSize, this.subtitleSize,
+      {this.title, this.body});
 
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
         Container(
           child: Image.network(
@@ -18,12 +21,14 @@ class MarketItemDesktop extends StatelessWidget {
             height: 125,
           ),
         ),
+        SizedBox(width: 30.0),
         Column(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisSize: MainAxisSize.min,
           children: <Widget>[
             SelectableText(
-              'Nome da Loja',
+              title,
               style: TextStyle(
                 fontWeight: FontWeight.w800,
                 height: 1.1,
@@ -33,20 +38,25 @@ class MarketItemDesktop extends StatelessWidget {
             SizedBox(
               height: 10,
             ),
-            SelectableText(
-              '''         
-Categoria: 
-Endereço: 
-Horário de funcionamento: 
-Formas de pagamento: 
-''',
-              style: TextStyle(
-                height: 1.0,
-                fontSize: descriptionSize,
+            Padding(
+              padding: EdgeInsets.only(left: 25.0),
+              child: SelectableText(
+//                 '''
+// Categoria:
+// Endereço:
+// Horário de funcionamento:
+// Formas de pagamento:
+// ''',
+                body,
+                style: TextStyle(
+                  height: 1.2,
+                  fontSize: descriptionSize,
+                ),
               ),
             ),
           ],
         ),
+        SizedBox(width: 30.0),
         RaisedButton(
           child: Text(
             'Ir para loja',
@@ -66,8 +76,11 @@ Formas de pagamento:
 class MarketItemMobile extends StatelessWidget {
   final double descriptionSize;
   final double subtitleSize;
+  final String title;
+  final String body;
 
-  const MarketItemMobile(this.descriptionSize, this.subtitleSize);
+  const MarketItemMobile(this.descriptionSize, this.subtitleSize,
+      {this.title, this.body});
 
   @override
   Widget build(BuildContext context) {
@@ -87,7 +100,7 @@ class MarketItemMobile extends StatelessWidget {
             Column(
               children: <Widget>[
                 SelectableText(
-                  'Nome da Loja',
+                  title,
                   style: TextStyle(
                     fontWeight: FontWeight.w800,
                     height: 1.1,
@@ -98,12 +111,14 @@ class MarketItemMobile extends StatelessWidget {
                   height: 10,
                 ),
                 SelectableText(
-                  '''Categoria: 
-Endereço: 
-Horário de funcionamento: 
-Formas de pagamento: ''',
+                  // '''
+                  // Categoria:
+                  // Endereço:
+                  // Horário de funcionamento:
+                  // Formas de pagamento: ''',
+                  body,
                   style: TextStyle(
-                    height: 1.2,
+                    height: 1.3,
                     fontSize: descriptionSize,
                   ),
                 ),

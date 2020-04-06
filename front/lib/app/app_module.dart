@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:good_hack/app/app_controller.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter/material.dart';
@@ -11,6 +12,9 @@ class AppModule extends MainModule {
         Bind(
           (i) => AppController(),
         ),
+        // Bind(
+        //   (i) => Dio(),
+        // )
       ];
 
   @override

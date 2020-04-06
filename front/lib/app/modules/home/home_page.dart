@@ -18,8 +18,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends ModularState<HomePage, HomeController> {
-  //use 'controller' variable to access controller
-
   @override
   Widget build(BuildContext context) {
     return ResponsiveBuilder(
@@ -36,13 +34,13 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
         ),
         body: CenteredView(
           newPadding: const EdgeInsets.symmetric(horizontal: 15, vertical: 1.0),
-          child: ListView(
-            primary: true,
-            shrinkWrap: true,
-            physics: BouncingScrollPhysics(),
+          child: Column(
+            // primary: true,
+            // shrinkWrap: true,
+            // physics: BouncingScrollPhysics(),
             children: <Widget>[
               HomeDetails(),
-              Markets(),
+              // Markets(),
             ],
           ),
         ),
