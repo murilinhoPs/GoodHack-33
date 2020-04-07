@@ -50,6 +50,9 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
             physics: BouncingScrollPhysics(),
             children: <Widget>[
               HomeDetails(),
+              SizedBox(
+                height: 30,
+              ),
               Markets(),
             ],
           ),
