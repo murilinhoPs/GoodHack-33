@@ -1,7 +1,7 @@
 {
   "name": "GoodHack-33",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "src/server.js",
   "repository": "https://github.com/ImOhashi/GoodHack-33",
   "author": "imohashi <leonardoohashi.mkt@gmail.com>",
   "license": "MIT",
