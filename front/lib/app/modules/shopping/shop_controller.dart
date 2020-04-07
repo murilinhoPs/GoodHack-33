@@ -36,7 +36,7 @@ abstract class _ShopControllerBase with Store {
         await _repository.postMessage(
           MessageModel(
                   from: "+12135684050",
-                  to: "$telefone",
+                  to: telefone,
                   body: 'Confira seu pedido. \n$finalMessage')
               .toJson(),
         );
