@@ -19,11 +19,13 @@ class NavBarMobile extends StatelessWidget {
             width: 30,
             child: InkWell(
               highlightColor: Colors.transparent,
-              splashColor: Color.fromARGB(245, 31, 219, 80),
+              hoverColor: Color.fromARGB(240, 255, 182, 72),
+              splashColor: Color.fromARGB(50, 31, 219, 80),
               borderRadius: BorderRadius.circular(5),
               child: Icon(
                 Icons.menu,
                 size: 30.0,
+                //color: Color.fromARGB(200, 255, 182, 72),
               ),
               onTap: () {
                 print(Modular.actualRoute);

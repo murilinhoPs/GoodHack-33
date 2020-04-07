@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:good_hack/app/app_controller.dart';
 import 'package:good_hack/app/shared/widgets/navigation_bar/components/drawer/drawer_header.dart';
 import 'package:good_hack/app/shared/widgets/navigation_bar/components/drawer/drawer_items.dart';
 
 class NavDrawer extends StatelessWidget {
-  final String sla = 'Padaria';
+  final _controller = Modular.get<AppController>();
 
   @override
   Widget build(BuildContext context) {
@@ -18,20 +19,27 @@ class NavDrawer extends StatelessWidget {
         children: <Widget>[
           NavDrawerHeader(),
           DrawerItem(
-              title: 'Início',
-              icon: Icons.home,
-              click: () {
-                print('Rota atual: ${Modular.actualRoute}');
-                Modular.to.popUntil(ModalRoute.withName(Modular.initialRoute));
-              }),
+            title: 'Início',
+            icon: Icons.home,
+            click: () {
+              print('Rota atual: ${Modular.actualRoute}');
+              Modular.to.popUntil(ModalRoute.withName(Modular.initialRoute));
+            },
+          ),
           DrawerItem(
             title: 'Sacola',
             icon: Icons.shopping_basket,
             click: () {
-              Modular.to.pushNamed('/loja/ ');
+              Modular.to.pushNamed('/loja/${_controller.id}');
             },
           ),
-          DrawerItem(title: 'Outro', icon: Icons.android, click: () {})
+          DrawerItem(
+            title: 'Covid-19',
+            icon: Icons.healing,
+            click: () {
+              // Modular.to.pushNamed('/info');
+            },
+          )
         ],
       ),
     );

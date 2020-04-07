@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
+import 'package:good_hack/app/app_controller.dart';
 
 class MarketItemDesktop extends StatelessWidget {
   final double descriptionSize;
@@ -73,9 +75,10 @@ class MarketItemMobile extends StatelessWidget {
   final double subtitleSize;
   final String title;
   final String body;
+  final String id;
 
   const MarketItemMobile(this.descriptionSize, this.subtitleSize,
-      {this.title, this.body});
+      {this.title, this.body, this.id});
 
   @override
   Widget build(BuildContext context) {
@@ -123,6 +126,7 @@ class MarketItemMobile extends StatelessWidget {
         ),
         SizedBox(height: 15),
         RaisedButton(
+          color: Color.fromARGB(255, 255, 182, 72),
           child: Text(
             'Ir para loja',
             style: TextStyle(
@@ -131,7 +135,9 @@ class MarketItemMobile extends StatelessWidget {
               fontSize: descriptionSize,
             ),
           ),
-          onPressed: () {},
+          onPressed: () {
+            Modular.get<AppController>().updateData(id, title);
+          },
         )
       ],
     );

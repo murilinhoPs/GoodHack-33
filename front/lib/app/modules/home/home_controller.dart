@@ -20,14 +20,10 @@ abstract class _HomeControllerBase with Store {
 
   @action
   Future fetchMarkets() async {
-    print('dsdddadadad: ${markets.length}');
-    //print(ShopModule.to.get<ShopController>());
     try {
       var response = await _repository.responseGet();
 
       markets = response;
-
-      print('dsd: ${markets.length}');
 
       print(ShopModule.to.get<ShopController>());
     } catch (e) {

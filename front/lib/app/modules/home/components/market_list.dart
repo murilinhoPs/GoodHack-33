@@ -62,6 +62,7 @@ class Markets extends StatelessWidget {
   Widget _mobileList(
       context, descriptionSize, subtitleSize, List<MarketModel> list) {
     return ListView.builder(
+      physics: NeverScrollableScrollPhysics(),
       shrinkWrap: true,
       itemCount: list.length,
       itemBuilder: (context, index) => Padding(
@@ -76,6 +77,7 @@ Endereço: ${list[index].endereco.rua}, número: ${list[index].endereco.numero}
 Horário de funcionamento: ${list[index].horarioFuncionamento}
 Formas de pagamento: ${list[index].formasDePagamento}
 ''',
+          id: list[index].sId,
         ),
       ),
     );

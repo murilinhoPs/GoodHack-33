@@ -1,8 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:good_hack/app/shared/models/email_model.dart';
 import 'package:good_hack/app/shared/models/markets_model.dart';
-import 'package:good_hack/app/shared/models/sms_model.dart';
 
 class ApiRepository extends Disposable {
   Dio _dioClient = Dio();
@@ -32,15 +30,13 @@ class ApiRepository extends Disposable {
     }
   }
 
-  Future postMessage(MessageModel body) async {
-    Response response = await _dioClient.post('http://localhost:3000/message',
-        options: Options(
-          headers: {
-            'accept': 'application/json',
-          },
-          contentType: 'application/json',
-        ),
-        data: body);
+  Future postMessage(Map<String, dynamic> body) async {
+    var response =
+        await _dioClient.post('http://localhost:3000/services/message',
+            options: Options(
+              contentType: 'application/json',
+            ),
+            data: body);
     if (response.statusCode == 200) {
       print("httpDebug: $_url \n $body}");
 
@@ -50,12 +46,9 @@ class ApiRepository extends Disposable {
     }
   }
 
-  Future postEmail(EmailModel body) async {
-    Response response = await _dioClient.post('http://localhost:3000/email',
+  Future postEmail(Map<String, dynamic> body) async {
+    var response = await _dioClient.post('http://localhost:3000/services/email',
         options: Options(
-          headers: {
-            'accept': 'application/json',
-          },
           contentType: 'application/json',
         ),
         data: body);

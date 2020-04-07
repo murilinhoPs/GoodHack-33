@@ -21,7 +21,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.engine('html', require('ejs').renderFile);
 
-app.set('views', `${__dirname}/../front/web`);
+app.set('views', `${__dirname}/../web`);
 
 app.use('/', router);
 

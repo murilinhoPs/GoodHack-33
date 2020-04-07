@@ -222,7 +222,7 @@ packages:
     source: hosted
     version: "0.14.0+3"
   http:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: http
       url: "https://pub.dartlang.org"
@@ -298,6 +298,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.9.6+3"
+  mobile_number:
+    dependency: "direct main"
+    description:
+      name: mobile_number
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.0.4"
   mobx:
     dependency: "direct main"
     description:
@@ -319,6 +326,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "4.1.1"
+  multi_masked_formatter:
+    dependency: "direct main"
+    description:
+      name: multi_masked_formatter
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.1.1"
   node_interop:
     dependency: transitive
     description:

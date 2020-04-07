@@ -7,7 +7,8 @@ class AppWidget extends StatelessWidget {
     return MaterialApp(
       title: 'Hack for Good',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        // primarySwatch: Color.fromARGB(255, 255, 182, 72),
+        primaryColor: Color.fromARGB(255, 255, 182, 72),
       ),
       initialRoute: '/',
       onGenerateRoute: Modular.generateRoute,

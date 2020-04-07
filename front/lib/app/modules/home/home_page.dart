@@ -35,7 +35,7 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
         key: _appController.scaffoldKeyH,
         drawer: size.isMobile ? NavDrawer() : null,
         appBar: PreferredSize(
-          preferredSize: Size.fromHeight(80.0),
+          preferredSize: Size.fromHeight(100.0),
           child: CenteredView(
             newPadding:
                 const EdgeInsets.symmetric(horizontal: 15, vertical: 25),

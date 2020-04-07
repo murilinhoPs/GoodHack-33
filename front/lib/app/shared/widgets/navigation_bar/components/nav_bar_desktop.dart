@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:good_hack/app/app_controller.dart';
 import 'package:good_hack/app/shared/widgets/navigation_bar/models/nav_bar_items.dart';
 import 'package:good_hack/app/shared/widgets/navigation_bar/models/nav_bar_logo.dart';
 
 class NavBarDesktop extends StatelessWidget {
+  final _controller = Modular.get<AppController>();
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -30,12 +33,17 @@ class NavBarDesktop extends StatelessWidget {
               NavBarItem(
                   title: 'Sacola',
                   click: () {
-                    Modular.to.pushNamed('/loja/ ');
+                    Modular.to.pushNamed('/loja/${_controller.id}');
                   }),
               SizedBox(
                 width: 15,
               ),
-              NavBarItem(title: 'Outro', click: () {}),
+              NavBarItem(
+                title: 'Covid-19',
+                click: () {
+                  //Modular.to.pushNamed('/info');
+                },
+              ),
             ],
           )
         ],
