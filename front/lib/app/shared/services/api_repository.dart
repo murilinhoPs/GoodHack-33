@@ -7,13 +7,13 @@ class ApiRepository extends Disposable {
 
   ApiRepository(this._dioClient);
 
-  String _url = 'http://localhost:3000/';
+  //String _url = 'http://localhost:3000/';
 
   Future responseGet() async {
     List<MarketModel> list = [];
 
     var response = await _dioClient.get(
-      'http://localhost:3000/lojas',
+      'https://good-hack-33.herokuapp.com/lojas',
     );
 
     if (response.statusCode == 200) {
@@ -31,14 +31,14 @@ class ApiRepository extends Disposable {
   }
 
   Future postMessage(Map<String, dynamic> body) async {
-    var response =
-        await _dioClient.post('http://localhost:3000/services/message',
-            options: Options(
-              contentType: 'application/json',
-            ),
-            data: body);
+    var response = await _dioClient.post(
+        'https://good-hack-33.herokuapp.com/services/message',
+        options: Options(
+          contentType: 'application/json',
+        ),
+        data: body);
     if (response.statusCode == 200) {
-      print("httpDebug: $_url \n $body}");
+      //print("httpDebug: $_url \n $body}");
 
       return response.statusCode;
     } else {
@@ -47,13 +47,14 @@ class ApiRepository extends Disposable {
   }
 
   Future postEmail(Map<String, dynamic> body) async {
-    var response = await _dioClient.post('http://localhost:3000/services/email',
+    var response = await _dioClient.post(
+        'https://good-hack-33.herokuapp.com/services/email',
         options: Options(
           contentType: 'application/json',
         ),
         data: body);
     if (response.statusCode == 200) {
-      print("httpDebug: $_url \n $body}");
+      //print("httpDebug: $_url \n $body}");
 
       return response.statusCode;
     } else {
