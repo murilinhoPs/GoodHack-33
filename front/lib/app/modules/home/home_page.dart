@@ -35,7 +35,7 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
           ),
         ),
         body: CenteredView(
-          newPadding: const EdgeInsets.symmetric(horizontal: 10, vertical: 1.0),
+          newPadding: const EdgeInsets.symmetric(horizontal: 15, vertical: 1.0),
           child: ListView(
             primary: true,
             shrinkWrap: true,

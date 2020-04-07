@@ -182,9 +182,11 @@ class _ShopViewMobileState extends State<ShopViewMobile> {
 
                         if (formController.validade()) {
                           _mobxController.postOrder(
-                              msg: finalMessage,
-                              telefone: finalNumber,
-                              email: finalEmail);
+                            msg: finalMessage,
+                            telefone: finalNumber,
+                            email: finalEmail,
+                            loja: Modular.get<AppController>().name,
+                          );
 
                           _numberController.clear();
                           _controller.clear();

@@ -1,5 +1,5 @@
+import 'package:dio/dio.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:good_hack/app/modules/home/home_page.dart';
 import 'package:good_hack/app/modules/shopping/shop_controller.dart';
 import 'package:good_hack/app/modules/shopping/shop_page.dart';
 import 'package:good_hack/app/shared/services/api_repository.dart';
@@ -7,6 +7,7 @@ import 'package:good_hack/app/shared/services/api_repository.dart';
 class ShopModule extends ChildModule {
   @override
   List<Bind> get binds => [
+        Bind((i) => ApiRepository(i.get<Dio>())),
         Bind((i) => ShopController(i.get<ApiRepository>())),
       ];
 

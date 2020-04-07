@@ -41,7 +41,7 @@ class NavBarDesktop extends StatelessWidget {
               NavBarItem(
                 title: 'Covid-19',
                 click: () {
-                  //Modular.to.pushNamed('/info');
+                  // Modular.to.pushNamed('/info');
                 },
               ),
             ],

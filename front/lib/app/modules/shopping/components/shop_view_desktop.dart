@@ -6,24 +6,35 @@ import 'package:multi_masked_formatter/multi_masked_formatter.dart';
 
 import '../shop_controller.dart';
 
-class ShopViewDesktop extends StatelessWidget {
+class ShopViewDesktop extends StatefulWidget {
   final titleSize;
   final subtitleSize;
 
   ShopViewDesktop(this.titleSize, this.subtitleSize);
 
+  @override
+  _ShopViewDesktopState createState() => _ShopViewDesktopState();
+}
+
+class _ShopViewDesktopState extends State<ShopViewDesktop> {
   final _controller = TextEditingController();
+
   final _numberController = TextEditingController();
+
   final _emailController = TextEditingController();
 
   final _formFocus = FocusNode();
+
   final _numberFocus = FocusNode();
+
   final _emailFocus = FocusNode();
 
   final _mobxController = Modular.get<ShopController>();
 
   String finalMessage;
+
   String finalNumber;
+
   String finalEmail;
 
   final Controller formController = Controller();
@@ -60,7 +71,7 @@ class ShopViewDesktop extends StatelessWidget {
                         style: TextStyle(
                           fontWeight: FontWeight.w800,
                           height: 1.1,
-                          fontSize: titleSize,
+                          fontSize: widget.titleSize,
                         ),
                       ),
                     ),
@@ -158,7 +169,7 @@ class ShopViewDesktop extends StatelessWidget {
                   style: TextStyle(
                     fontWeight: FontWeight.w800,
                     height: 1.0,
-                    fontSize: subtitleSize,
+                    fontSize: widget.subtitleSize,
                   ),
                 ),
                 onPressed: () async {

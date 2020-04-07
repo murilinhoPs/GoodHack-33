@@ -15,7 +15,7 @@ abstract class _ShopControllerBase with Store {
   String finalMessage = ' ';
 
   @action
-  postOrder({String msg, String email, String telefone}) async {
+  postOrder({String msg, String email, String telefone, String loja}) async {
     finalMessage = msg;
 
     //print(finalMessage);
@@ -33,13 +33,23 @@ abstract class _ShopControllerBase with Store {
               .toJson(),
         );
 
-        await _repository.postEmail(EmailModel(
-          to: "murilinhorps@gmail.com",
-          from: email,
-          subject: "Pedido",
-          text: '$finalMessage \nContato: $telefone',
-          html: "<t>$finalMessage \nContato: $telefone'</t>",
-        ).toJson());
+        await _repository.postMessage(
+          MessageModel(
+                  from: "+12135684050",
+                  to: "$telefone",
+                  body: 'Confira seu pedido. \n$finalMessage')
+              .toJson(),
+        );
+
+        await _repository.postEmail(
+          EmailModel(
+            to: "murilinhorps@gmail.com",
+            from: email,
+            subject: "Pedido",
+            text: '$finalMessage \nContato: $telefone',
+            html: "<t>$finalMessage \nContato: $telefone'</t>",
+          ).toJson(),
+        );
 
         print(finalMessage);
       } catch (e) {

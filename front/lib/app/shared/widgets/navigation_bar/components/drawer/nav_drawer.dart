@@ -22,26 +22,26 @@ class NavDrawer extends StatelessWidget {
             title: 'Início',
             icon: Icons.home,
             click: () {
-              print('Rota atual: ${Modular.actualRoute}');
-              Modular.to.popAndPushNamed(Modular.initialRoute);
-              //Modular.to.popUntil(ModalRoute.withName(Modular.initialRoute));
+              print('popUntil: initialRoute');
+              Modular.to.popUntil(ModalRoute.withName(Modular.initialRoute));
             },
           ),
           DrawerItem(
             title: 'Sacola',
             icon: Icons.shopping_basket,
             click: () {
-              // Modular.to.popAndPushNamed('/loja/${_controller.id}');
-              Navigator.popAndPushNamed(context, '/loja/${_controller.id}');
+              print('popAndPushNamed: /loja/:id');
+              Modular.to.popAndPushNamed('/loja/${_controller.id}');
             },
           ),
           DrawerItem(
             title: 'Covid-19',
             icon: Icons.healing,
             click: () {
-              Modular.to.pushNamed('/info');
+              // print('popAndPushNamed: /info');
+              // Modular.to.pushNamed('/info');
             },
-          )
+          ),
         ],
       ),
     );

@@ -6,7 +6,6 @@ import 'package:good_hack/app/app_widget.dart';
 import 'package:good_hack/app/modules/home/home_module.dart';
 import 'package:good_hack/app/modules/info/info_module.dart';
 import 'package:good_hack/app/modules/shopping/shop_module.dart';
-import 'package:good_hack/app/shared/services/api_repository.dart';
 
 class AppModule extends MainModule {
   @override
@@ -17,7 +16,6 @@ class AppModule extends MainModule {
         Bind(
           (i) => Dio(),
         ),
-        Bind((i) => ApiRepository(i.get<Dio>())),
       ];
 
   @override
@@ -31,9 +29,9 @@ class AppModule extends MainModule {
           module: ShopModule(),
         ),
         Router(
-          '/',
+          '/info',
           module: InfoModule(),
-        )
+        ),
       ];
 
   @override

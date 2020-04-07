@@ -1,5 +1,3 @@
-import 'package:good_hack/app/modules/shopping/shop_controller.dart';
-import 'package:good_hack/app/modules/shopping/shop_module.dart';
 import 'package:good_hack/app/shared/models/markets_model.dart';
 import 'package:good_hack/app/shared/services/api_repository.dart';
 import 'package:mobx/mobx.dart';

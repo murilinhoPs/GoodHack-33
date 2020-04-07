@@ -13,7 +13,7 @@ import 'shop_controller.dart';
 class ShopPage extends StatefulWidget {
   final String id;
 
-  final controller = Modular.get<AppController>();
+  final appController = Modular.get<AppController>();
 
   ShopPage({Key key, this.id}) : super(key: key);
 
@@ -31,7 +31,7 @@ class _ShopPageState extends ModularState<ShopPage, ShopController> {
         double subtitleSize = size.isMobile ? 18 : 26;
 
         return Scaffold(
-          key: Modular.get<AppController>().scaffoldKeyS,
+          key: widget.appController.scaffoldKeyS,
           drawer: size.isMobile ? NavDrawer() : null,
           appBar: PreferredSize(
             preferredSize: Size.fromHeight(100.0),
