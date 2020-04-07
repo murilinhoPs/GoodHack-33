@@ -4,9 +4,12 @@ import 'package:good_hack/app/app_controller.dart';
 import 'package:good_hack/app/shared/widgets/navigation_bar/models/nav_bar_items.dart';
 import 'package:good_hack/app/shared/widgets/navigation_bar/models/nav_bar_logo.dart';
 
-class NavBarDesktop extends StatelessWidget {
-  final _controller = Modular.get<AppController>();
+class NavBarDesktop extends StatefulWidget {
+  @override
+  _NavBarDesktopState createState() => _NavBarDesktopState();
+}
 
+class _NavBarDesktopState extends ModularState<NavBarDesktop, AppController> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -21,7 +24,7 @@ class NavBarDesktop extends StatelessWidget {
             children: <Widget>[
               NavBarItem(
                   title: 'Início',
-                  click: () {
+                  click: () async {
                     print('Rota atual: ${Modular.actualRoute}');
 
                     Modular.to
@@ -33,7 +36,7 @@ class NavBarDesktop extends StatelessWidget {
               NavBarItem(
                   title: 'Sacola',
                   click: () {
-                    Modular.to.pushNamed('/loja/${_controller.id}');
+                    Modular.to.pushNamed('/loja/${controller.id}');
                   }),
               SizedBox(
                 width: 15,
@@ -41,7 +44,7 @@ class NavBarDesktop extends StatelessWidget {
               NavBarItem(
                 title: 'Covid-19',
                 click: () {
-                  // Modular.to.pushNamed('/info');
+                  //Modular.to.pushNamed('/info');
                 },
               ),
             ],

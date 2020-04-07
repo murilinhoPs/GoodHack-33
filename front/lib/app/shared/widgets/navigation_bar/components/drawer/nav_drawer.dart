@@ -4,9 +4,12 @@ import 'package:good_hack/app/app_controller.dart';
 import 'package:good_hack/app/shared/widgets/navigation_bar/components/drawer/drawer_header.dart';
 import 'package:good_hack/app/shared/widgets/navigation_bar/components/drawer/drawer_items.dart';
 
-class NavDrawer extends StatelessWidget {
-  final _controller = Modular.get<AppController>();
+class NavDrawer extends StatefulWidget {
+  @override
+  _NavDrawerState createState() => _NavDrawerState();
+}
 
+class _NavDrawerState extends ModularState<NavDrawer, AppController> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -31,15 +34,15 @@ class NavDrawer extends StatelessWidget {
             icon: Icons.shopping_basket,
             click: () {
               print('popAndPushNamed: /loja/:id');
-              Modular.to.popAndPushNamed('/loja/${_controller.id}');
+              Modular.to.popAndPushNamed('/loja/${controller.id}');
             },
           ),
           DrawerItem(
             title: 'Covid-19',
             icon: Icons.healing,
             click: () {
-              // print('popAndPushNamed: /info');
-              // Modular.to.pushNamed('/info');
+              //print('pushNamed: /info');
+              // Navigator.pushNamed(context, '/info');
             },
           ),
         ],
