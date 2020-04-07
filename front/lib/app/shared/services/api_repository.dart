@@ -3,7 +3,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:good_hack/app/shared/models/markets_model.dart';
 
 class ApiRepository extends Disposable {
-  Dio _dioClient = Dio();
+  Dio _dioClient;
 
   ApiRepository(this._dioClient);
 
@@ -17,9 +17,9 @@ class ApiRepository extends Disposable {
     if (response.statusCode == 200) {
       for (var json in response.data) {
         list.add(MarketModel.fromJson(json));
-        print('Tamanho: ${list.length}');
       }
 
+      // print('Tamanho: ${list.length}');
       print(response.statusCode);
 
       return list;

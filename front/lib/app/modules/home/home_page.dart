@@ -21,14 +21,6 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
   var _appController = Modular.get<AppController>();
 
   @override
-  void initState() {
-    //print(ShopPage());
-
-    //print(Modular.get<HomeController>());
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return ResponsiveBuilder(
       builder: (context, size) => Scaffold(

@@ -11,9 +11,7 @@ class HomeController = _HomeControllerBase with _$HomeController;
 abstract class _HomeControllerBase with Store {
   final ApiRepository _repository;
 
-  _HomeControllerBase(this._repository) {
-    fetchMarkets();
-  }
+  _HomeControllerBase(this._repository);
 
   @observable
   List<MarketModel> markets = [];
@@ -24,8 +22,6 @@ abstract class _HomeControllerBase with Store {
       var response = await _repository.responseGet();
 
       markets = response;
-
-      print(ShopModule.to.get<ShopController>());
     } catch (e) {
       print('Error Message: ${e.message}');
     }

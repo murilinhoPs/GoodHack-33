@@ -4,9 +4,12 @@ import 'package:good_hack/app/shared/widgets/navigation_bar/models/nav_bar_logo.
 
 import '../../../../app_controller.dart';
 
-class NavBarMobile extends StatelessWidget {
-  final _appController = Modular.get<AppController>();
+class NavBarMobile extends StatefulWidget {
+  @override
+  _NavBarMobileState createState() => _NavBarMobileState();
+}
 
+class _NavBarMobileState extends ModularState<NavBarMobile, AppController> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -30,13 +33,13 @@ class NavBarMobile extends StatelessWidget {
               onTap: () {
                 print(Modular.actualRoute);
 
-                print(_appController.scaffoldKeyH.currentWidget);
-                print(_appController.scaffoldKeyS.currentWidget);
+                print(controller.scaffoldKeyH.currentWidget);
+                print(controller.scaffoldKeyS.currentWidget);
 
                 if (Modular.actualRoute.contains('/loja')) {
-                  _appController.openS();
+                  controller.openS();
                 } else if (Modular.actualRoute == Modular.initialRoute)
-                  _appController.open();
+                  controller.open();
               },
             ),
           ),

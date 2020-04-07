@@ -7,8 +7,17 @@ import 'package:responsive_builder/responsive_builder.dart';
 
 import '../home_controller.dart';
 
-class Markets extends StatelessWidget {
-  final controller = Modular.get<HomeController>();
+class Markets extends StatefulWidget {
+  @override
+  _MarketsState createState() => _MarketsState();
+}
+
+class _MarketsState extends ModularState<Markets, HomeController> {
+  @override
+  void initState() {
+    controller.fetchMarkets();
+    super.initState();
+  }
 
   Widget build(BuildContext context) {
     return ResponsiveBuilder(builder: (context, size) {
