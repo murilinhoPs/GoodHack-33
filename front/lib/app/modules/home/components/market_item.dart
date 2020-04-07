@@ -7,9 +7,10 @@ class MarketItemDesktop extends StatelessWidget {
   final double subtitleSize;
   final String title;
   final String body;
+  final String id;
 
   const MarketItemDesktop(this.descriptionSize, this.subtitleSize,
-      {this.title, this.body});
+      {this.title, this.body, this.id});
 
   @override
   Widget build(BuildContext context) {
@@ -63,7 +64,10 @@ class MarketItemDesktop extends StatelessWidget {
               fontSize: descriptionSize,
             ),
           ),
-          onPressed: () {},
+          color: Color.fromARGB(255, 255, 182, 72),
+          onPressed: () {
+            Modular.get<AppController>().updateData(id, title);
+          },
         )
       ],
     );

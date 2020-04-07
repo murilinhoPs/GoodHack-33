@@ -26,7 +26,8 @@ abstract class _ShopControllerBase with Store {
           MessageModel(
                   from: "+12135684050",
                   to: "+5511954364143",
-                  body: 'Confira o novo pedido no seu email!')
+                  body:
+                      'Confira o novo pedido no seu email! Confira se não está no Spam ou na Lixeira.')
               .toJson(),
         );
 

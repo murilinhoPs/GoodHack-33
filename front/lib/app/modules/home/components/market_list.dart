@@ -100,6 +100,7 @@ Endereço: ${list[index].endereco.rua}, número: ${list[index].endereco.numero}
 Horário de funcionamento: ${list[index].horarioFuncionamento}
 Formas de pagamento: ${list[index].formasDePagamento}
 ''',
+          id: list[index].sId,
         ),
       ),
     );
