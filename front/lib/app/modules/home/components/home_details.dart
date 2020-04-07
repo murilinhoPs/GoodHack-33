@@ -21,7 +21,7 @@ class HomeDetails extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(
-              'Nome do\nNosso Projeto',
+              'Retire Fácil',
               style: TextStyle(
                 fontWeight: FontWeight.w800,
                 height: 1.1,
@@ -33,12 +33,16 @@ class HomeDetails extends StatelessWidget {
               height: 30,
             ),
             Text(
-              'Descricao sobre o nosso projeto e para o que ele serve. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+              '''Plataforma onde o cliente conseguirá criar uma lista de compras, e esta será enviada para o comerciante, que fará a separação e reserva dos produtos.
+Assim, o cliente apenas precisará ir ao estabelecimento para retirar suas compras, evitando filas, diminuindo seu tempo de exposição e evitando aglomerações''',
               style: TextStyle(
                 fontSize: descriptionSize,
                 height: 1.7,
               ),
               textAlign: textAlignment,
+            ),
+            SizedBox(
+              height: 30,
             ),
           ],
         ),
