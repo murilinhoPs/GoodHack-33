@@ -24,25 +24,26 @@ class MarketItemDesktop extends StatelessWidget {
             height: 125,
           ),
         ),
-        SizedBox(width: 30.0),
+        SizedBox(width: 10.0),
         Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
-            SelectableText(
+            Text(
               title,
               style: TextStyle(
                 fontWeight: FontWeight.w800,
                 height: 1.1,
                 fontSize: subtitleSize,
               ),
+              textAlign: TextAlign.center,
             ),
             SizedBox(
               height: 10,
             ),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 25.0),
+              padding: EdgeInsets.symmetric(horizontal: 0.0),
               child: SelectableText(
                 '''$body''',
                 maxLines: null,

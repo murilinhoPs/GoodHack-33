@@ -6,48 +6,50 @@ class HomeDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ResponsiveBuilder(builder: (context, size) {
-      var textAlignment = size.isDesktop ? TextAlign.left : TextAlign.center;
+    return ResponsiveBuilder(
+      builder: (context, size) {
+        var textAlignment = size.isDesktop ? TextAlign.left : TextAlign.center;
 
-      double titleSize = size.isMobile ? 50 : 80;
+        double titleSize = size.isMobile ? 40 : 70;
 
-      double descriptionSize = size.isMobile ? 18 : 21;
+        double descriptionSize = size.isMobile ? 16 : 22;
 
-      return Container(
-        width: 800,
-        height: MediaQuery.of(context).size.height / 2,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          mainAxisSize: MainAxisSize.max,
-          children: <Widget>[
-            Text(
-              'Retire Fácil',
-              style: TextStyle(
-                fontWeight: FontWeight.w800,
-                height: 1.1,
-                fontSize: titleSize,
+        return Container(
+          width: 800,
+          //height: MediaQuery.of(context).size.height / 1.8,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisSize: MainAxisSize.max,
+            children: <Widget>[
+              Text(
+                'Retire Fácil',
+                style: TextStyle(
+                  fontWeight: FontWeight.w800,
+                  height: 1.1,
+                  fontSize: titleSize,
+                ),
+                textAlign: textAlignment,
               ),
-              textAlign: textAlignment,
-            ),
-            SizedBox(
-              height: 30,
-            ),
-            Text(
-              '''Plataforma onde o cliente conseguirá criar uma lista de compras, e esta será enviada para o comerciante, que fará a separação e reserva dos produtos.
+              SizedBox(
+                height: 30,
+              ),
+              Text(
+                '''Plataforma onde o cliente conseguirá criar uma lista de compras, e esta será enviada para o comerciante, que fará a separação e reserva dos produtos.
 Assim, o cliente apenas precisará ir ao estabelecimento para retirar suas compras, evitando filas, diminuindo seu tempo de exposição e evitando aglomerações''',
-              style: TextStyle(
-                fontSize: descriptionSize,
-                height: 1.7,
+                style: TextStyle(
+                  fontSize: descriptionSize,
+                  height: 1.7,
+                ),
+                textAlign: textAlignment,
               ),
-              textAlign: textAlignment,
-            ),
-            SizedBox(
-              height: 30,
-            ),
-          ],
-        ),
-      );
-    });
+              SizedBox(
+                height: 30,
+              ),
+            ],
+          ),
+        );
+      },
+    );
   }
 }

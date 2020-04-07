@@ -14,14 +14,14 @@ class Markets extends StatelessWidget {
     return ResponsiveBuilder(builder: (context, size) {
       var textAlignment = size.isDesktop ? TextAlign.left : TextAlign.center;
 
-      double titleSize = size.isMobile ? 32 : 52;
+      double titleSize = size.isMobile ? 32 : 42;
 
       double subtitleSize = size.isMobile ? 22 : 32;
 
-      double descriptionSize = size.isMobile ? 16 : 20;
+      double descriptionSize = size.isMobile ? 14 : 20;
 
       return Container(
-        width: 600,
+        //width: 700,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
@@ -45,10 +45,13 @@ class Markets extends StatelessWidget {
                   final list = controller.markets;
                   print(list.length);
                   return ScreenTypeLayout(
-                      desktop: _dekstopList(
-                          context, descriptionSize, subtitleSize, list),
-                      mobile: _mobileList(
-                          context, descriptionSize, subtitleSize, list));
+                    desktop: _dekstopList(
+                        context, descriptionSize, subtitleSize, list),
+                    mobile: _mobileList(
+                        context, descriptionSize, subtitleSize, list),
+                    tablet: _tabletList(
+                        context, descriptionSize, subtitleSize, list),
+                  );
                 } else
                   return Text('Nenhum dado....');
               },
@@ -73,10 +76,33 @@ class Markets extends StatelessWidget {
           title: list[index].nome,
           body: '''
 Categoria: ${list[index].categoria}
+${list[index].endereco.rua}, número ${list[index].endereco.numero}
+Horário: ${list[index].horarioFuncionamento}
+Formas de pagamento: 
+${list[index].formasDePagamento}''',
+          id: list[index].sId,
+        ),
+      ),
+    );
+  }
+
+  Widget _tabletList(
+      context, descriptionSize, subtitleSize, List<MarketModel> list) {
+    return ListView.builder(
+      physics: NeverScrollableScrollPhysics(),
+      shrinkWrap: true,
+      itemCount: list.length,
+      itemBuilder: (context, index) => Padding(
+        padding: const EdgeInsets.only(top: 30.0, bottom: 15.0),
+        child: MarketItemMobile(
+          descriptionSize,
+          subtitleSize,
+          title: list[index].nome,
+          body: '''
+Categoria: ${list[index].categoria}
 Endereço: ${list[index].endereco.rua}, número: ${list[index].endereco.numero}
 Horário de funcionamento: ${list[index].horarioFuncionamento}
-Formas de pagamento: ${list[index].formasDePagamento}
-''',
+Formas de pagamento: ${list[index].formasDePagamento}''',
           id: list[index].sId,
         ),
       ),
@@ -98,8 +124,7 @@ Formas de pagamento: ${list[index].formasDePagamento}
 Categoria: ${list[index].categoria}
 Endereço: ${list[index].endereco.rua}, número: ${list[index].endereco.numero}
 Horário de funcionamento: ${list[index].horarioFuncionamento}
-Formas de pagamento: ${list[index].formasDePagamento}
-''',
+Formas de pagamento: ${list[index].formasDePagamento}''',
           id: list[index].sId,
         ),
       ),
