@@ -8,6 +8,7 @@ const router = require('./routes');
 
 const app = express();
 
+app.use(cors());
 mongoose.connect(
   'mongodb+srv://takai:omnistack@cluster0-9coiv.mongodb.net/week10?retryWrites=true&w=majority',
   {
@@ -19,7 +20,7 @@ mongoose.connect(
 app.options('/lojas', cors());
 app.options('/services/email', cors());
 app.options('/services/message', cors());
-app.use(cors());
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
