@@ -2,6 +2,7 @@ require('dotenv/config');
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
+const path = require('path');
 
 const router = require('./routes');
 
@@ -17,11 +18,9 @@ mongoose.connect(
 
 app.use(cors());
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
 
-app.engine('html', require('ejs').renderFile);
 
-app.set('views', `${__dirname}/../web`);
+app.use(express.static(path.join(__dirname, "/../web/")));
 
 app.use('/', router);
 
