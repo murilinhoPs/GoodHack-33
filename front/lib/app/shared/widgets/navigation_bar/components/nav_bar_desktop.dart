@@ -5,6 +5,10 @@ import 'package:good_hack/app/shared/widgets/navigation_bar/models/nav_bar_items
 import 'package:good_hack/app/shared/widgets/navigation_bar/models/nav_bar_logo.dart';
 
 class NavBarDesktop extends StatefulWidget {
+  final String route;
+
+  NavBarDesktop(this.route);
+
   @override
   _NavBarDesktopState createState() => _NavBarDesktopState();
 }
@@ -14,6 +18,10 @@ class _NavBarDesktopState extends ModularState<NavBarDesktop, AppController> {
   Widget build(BuildContext context) {
     return Container(
       height: 100,
+      // decoration: BoxDecoration(
+      //     border: Border(
+      //   bottom: BorderSide(width: 0.5, color: Colors.black),
+      // )),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
@@ -27,26 +35,39 @@ class _NavBarDesktopState extends ModularState<NavBarDesktop, AppController> {
                   click: () async {
                     print('Rota atual: ${Modular.actualRoute}');
 
-                    Modular.to
-                        .popUntil(ModalRoute.withName(Modular.initialRoute));
+                    if (widget.route != '/')
+                      Modular.to
+                          .popUntil(ModalRoute.withName(Modular.initialRoute));
                   }),
               SizedBox(
                 width: 15,
               ),
               NavBarItem(
-                  title: Text('Sacola', style: TextStyle(fontSize: 18)),
-                  click: () {
+                title: Text('Sacola', style: TextStyle(fontSize: 18)),
+                click: () {
+                  if (widget.route != '/loja')
                     Modular.to.pushNamed('/loja/${controller.id}');
-                  }),
+                },
+              ),
               SizedBox(
                 width: 15,
               ),
+              NavBarItem(
+                title: Text('Covid-19', style: TextStyle(fontSize: 18)),
+                click: () {
+                  if (widget.route != '/info') {
+                    print('pushNamed: /info');
+
+                    Modular.to.pushNamed('/info');
+                  } else
+                    Modular.to.pop();
+                },
+              ),
               // NavBarItem(
-              //   title: Text('Covid-19', style: TextStyle(fontSize: 18)),
-              //   click: () {
-              //     Modular.to.pushNamed('/info');
-              //   },
-              // ),
+              //     title: Observer(builder: (_) => Icon(controller.icon)),
+              //     click: () {
+              //       controller.changeTheme();
+              //     }),
             ],
           )
         ],

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:good_hack/app/app_controller.dart';
 
+final appController = Modular.get<AppController>();
+
 class MarketItemDesktop extends StatelessWidget {
   final double descriptionSize;
   final double subtitleSize;
@@ -67,7 +69,7 @@ class MarketItemDesktop extends StatelessWidget {
           ),
           color: Color.fromARGB(255, 255, 182, 72),
           onPressed: () {
-            Modular.get<AppController>().updateData(id, title);
+            appController.updateData(id, title);
           },
         )
       ],
@@ -141,7 +143,7 @@ class MarketItemMobile extends StatelessWidget {
             ),
           ),
           onPressed: () {
-            Modular.get<AppController>().updateData(id, title);
+            appController.updateData(id, title);
           },
         )
       ],

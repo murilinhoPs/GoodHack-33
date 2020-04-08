@@ -9,6 +9,23 @@ part of 'shop_controller.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$ShopController on _ShopControllerBase, Store {
+  final _$storeNameAtom = Atom(name: '_ShopControllerBase.storeName');
+
+  @override
+  String get storeName {
+    _$storeNameAtom.context.enforceReadPolicy(_$storeNameAtom);
+    _$storeNameAtom.reportObserved();
+    return super.storeName;
+  }
+
+  @override
+  set storeName(String value) {
+    _$storeNameAtom.context.conditionallyRunInAction(() {
+      super.storeName = value;
+      _$storeNameAtom.reportChanged();
+    }, _$storeNameAtom, name: '${_$storeNameAtom.name}_set');
+  }
+
   final _$finalMessageAtom = Atom(name: '_ShopControllerBase.finalMessage');
 
   @override
@@ -34,9 +51,23 @@ mixin _$ShopController on _ShopControllerBase, Store {
         .postOrder(msg: msg, email: email, telefone: telefone, loja: loja));
   }
 
+  final _$_ShopControllerBaseActionController =
+      ActionController(name: '_ShopControllerBase');
+
+  @override
+  dynamic name(dynamic newName) {
+    final _$actionInfo = _$_ShopControllerBaseActionController.startAction();
+    try {
+      return super.name(newName);
+    } finally {
+      _$_ShopControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
   @override
   String toString() {
-    final string = 'finalMessage: ${finalMessage.toString()}';
+    final string =
+        'storeName: ${storeName.toString()},finalMessage: ${finalMessage.toString()}';
     return '{$string}';
   }
 }

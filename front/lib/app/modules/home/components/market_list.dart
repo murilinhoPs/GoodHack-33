@@ -73,23 +73,23 @@ class _MarketsState extends ModularState<Markets, HomeController> {
 
   Widget _mobileList(
       context, descriptionSize, subtitleSize, List<MarketModel> list) {
-    return ListView.builder(
-      physics: NeverScrollableScrollPhysics(),
-      shrinkWrap: true,
-      itemCount: list.length,
-      itemBuilder: (context, index) => Padding(
-        padding: const EdgeInsets.only(top: 30.0, bottom: 15.0),
-        child: MarketItemMobile(
-          descriptionSize,
-          subtitleSize,
-          title: list[index].nome,
-          body: '''
+    return Column(
+      children: List.generate(
+        list.length,
+        (index) => Padding(
+          padding: const EdgeInsets.only(top: 30.0, bottom: 15.0),
+          child: MarketItemMobile(
+            descriptionSize,
+            subtitleSize,
+            title: list[index].nome,
+            body: '''
 Categoria: ${list[index].categoria}
 ${list[index].endereco.rua}, número ${list[index].endereco.numero}
 Horário: ${list[index].horarioFuncionamento}
 Formas de pagamento: 
 ${list[index].formasDePagamento}''',
-          id: list[index].sId,
+            id: list[index].sId,
+          ),
         ),
       ),
     );
@@ -97,22 +97,22 @@ ${list[index].formasDePagamento}''',
 
   Widget _tabletList(
       context, descriptionSize, subtitleSize, List<MarketModel> list) {
-    return ListView.builder(
-      physics: NeverScrollableScrollPhysics(),
-      shrinkWrap: true,
-      itemCount: list.length,
-      itemBuilder: (context, index) => Padding(
-        padding: const EdgeInsets.only(top: 30.0, bottom: 15.0),
-        child: MarketItemMobile(
-          descriptionSize,
-          subtitleSize,
-          title: list[index].nome,
-          body: '''
+    return Column(
+      children: List.generate(
+        list.length,
+        (index) => Padding(
+          padding: const EdgeInsets.only(top: 30.0, bottom: 15.0),
+          child: MarketItemMobile(
+            descriptionSize,
+            subtitleSize,
+            title: list[index].nome,
+            body: '''
 Categoria: ${list[index].categoria}
 Endereço: ${list[index].endereco.rua}, número: ${list[index].endereco.numero}
 Horário de funcionamento: ${list[index].horarioFuncionamento}
 Formas de pagamento: ${list[index].formasDePagamento}''',
-          id: list[index].sId,
+            id: list[index].sId,
+          ),
         ),
       ),
     );
@@ -120,21 +120,22 @@ Formas de pagamento: ${list[index].formasDePagamento}''',
 
   Widget _dekstopList(
       context, descriptionSize, subtitleSize, List<MarketModel> list) {
-    return ListView.builder(
-      shrinkWrap: true,
-      itemCount: list.length,
-      itemBuilder: (context, index) => Padding(
-        padding: const EdgeInsets.only(top: 30.0, bottom: 15.0),
-        child: MarketItemDesktop(
-          descriptionSize,
-          subtitleSize,
-          title: list[index].nome,
-          body: '''
+    return Column(
+      children: List.generate(
+        list.length,
+        (index) => Padding(
+          padding: const EdgeInsets.only(top: 30.0, bottom: 15.0),
+          child: MarketItemDesktop(
+            descriptionSize,
+            subtitleSize,
+            title: list[index].nome,
+            body: '''
 Categoria: ${list[index].categoria}
 Endereço: ${list[index].endereco.rua}, número: ${list[index].endereco.numero}
 Horário de funcionamento: ${list[index].horarioFuncionamento}
 Formas de pagamento: ${list[index].formasDePagamento}''',
-          id: list[index].sId,
+            id: list[index].sId,
+          ),
         ),
       ),
     );

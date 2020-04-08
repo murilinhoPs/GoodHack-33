@@ -8,61 +8,56 @@ import 'package:good_hack/app/shared/widgets/navigation_bar/navigation_bar.dart'
 import 'package:responsive_builder/responsive_builder.dart';
 
 class InfoPage extends StatefulWidget {
+  final appController = Modular.get<AppController>();
+
   @override
   _InfoPageState createState() => _InfoPageState();
 }
 
 class _InfoPageState extends ModularState<InfoPage, InfoController> {
-  final _appController = Modular.get<AppController>();
-
   @override
   Widget build(BuildContext context) {
     return ResponsiveBuilder(
       builder: (context, size) {
-        double titleSize = size.isMobile ? 40 : 60;
-
-        double descriptionSize = size.isMobile ? 14 : 18;
+        double fontSize = size.isMobile ? 24 : 32;
 
         return Scaffold(
           backgroundColor: Colors.white,
-          key: _appController.scaffoldKeyI,
-          drawer: size.isMobile ? NavDrawer() : null,
+          key: widget.appController.scaffoldKeyI,
+          drawer: size.isMobile ? NavDrawer('/info') : null,
           appBar: PreferredSize(
-            preferredSize: Size.fromHeight(100.0),
+            preferredSize: Size.fromHeight(size.screenSize.height * 0.07),
             child: CenteredView(
-              newPadding:
-                  const EdgeInsets.symmetric(horizontal: 15, vertical: 25),
-              child: NavigationBar(),
+              newPadding: const EdgeInsets.only(
+                  right: 15, left: 15.0, top: 8.0, bottom: 0),
+              child: NavigationBar('/info'),
             ),
           ),
           body: CenteredView(
             newPadding:
-                const EdgeInsets.symmetric(horizontal: 15, vertical: 1.0),
-            child: ListView(
-              primary: true,
-              shrinkWrap: true,
-              physics: BouncingScrollPhysics(),
+                const EdgeInsets.symmetric(horizontal: 15, vertical: 15.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              //crossAxisAlignment: CrossAxisAlignment.end,
+              mainAxisSize: MainAxisSize.min,
               children: <Widget>[
-                Text(
-                  'Retire Fácil',
-                  style: TextStyle(
-                    fontWeight: FontWeight.w800,
-                    height: 1.1,
-                    fontSize: titleSize,
-                  ),
-                ),
                 SizedBox(height: 15.0),
                 Text(
                   'Algumas recomendações para se proteger do Covid-19',
+                  textAlign: TextAlign.center,
                   style: TextStyle(
                     fontWeight: FontWeight.w800,
                     height: 1.1,
-                    fontSize: descriptionSize,
+                    fontSize: fontSize,
                   ),
                 ),
-                SizedBox(height: 20.0),
+                SizedBox(height: 30.0),
                 Container(
-                  child: Image.asset('assets/info.png'),
+                  child: Image.asset(
+                    'assets/info.png',
+                    width: 1600,
+                    height: size.screenSize.height * 0.5,
+                  ),
                 )
               ],
             ),

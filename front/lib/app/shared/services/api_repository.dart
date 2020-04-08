@@ -7,7 +7,7 @@ class ApiRepository extends Disposable {
 
   ApiRepository(this._dioClient);
 
-  String _url = 'https://good-hack-33.herokuapp.com';
+  //String _url = 'https://good-hack-33.herokuapp.com';
 
   Future responseGet() async {
     List<MarketModel> list = [];

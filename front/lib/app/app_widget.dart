@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:good_hack/app/app_controller.dart';
 
-class AppWidget extends StatelessWidget {
+class AppWidget extends StatefulWidget {
+  @override
+  _AppWidgetState createState() => _AppWidgetState();
+}
+
+class _AppWidgetState extends ModularState<AppWidget, AppController> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Hack for Good',
-      theme: ThemeData(
-        // primarySwatch: Color.fromARGB(255, 255, 182, 72),
-        primaryColor: Color.fromARGB(255, 255, 182, 72),
-      ),
+      theme: controller.theme,
       initialRoute: '/',
       onGenerateRoute: Modular.generateRoute,
       navigatorKey: Modular.navigatorKey,

@@ -11,6 +11,7 @@ import 'home_controller.dart';
 
 class HomePage extends StatefulWidget {
   final String title;
+
   HomePage({Key key, this.title = "Home"}) : super(key: key);
 
   @override
@@ -18,28 +19,27 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends ModularState<HomePage, HomeController> {
-  var _appController = Modular.get<AppController>();
-
-  // _HomePageState() {
-  //   _appController.scaffoldKeyH = GlobalKey<ScaffoldState>();
-  // }
+  final appController = Modular.get<AppController>();
 
   @override
   Widget build(BuildContext context) {
+    print('ActualRoute: ${Modular.actualRoute}');
+
     return ResponsiveBuilder(
       builder: (context, size) => Scaffold(
-        key: _appController.scaffoldKeyH,
-        drawer: size.isMobile ? NavDrawer() : null,
+        key: appController.scaffoldKeyH,
+        drawer: size.isMobile ? NavDrawer('/') : null,
         appBar: PreferredSize(
-          preferredSize: Size.fromHeight(100.0),
+          preferredSize: Size.fromHeight(size.screenSize.height * 0.07),
           child: CenteredView(
-            newPadding:
-                const EdgeInsets.symmetric(horizontal: 15, vertical: 25),
-            child: NavigationBar(),
+            newPadding: const EdgeInsets.only(
+                right: 15, left: 15.0, top: 8.0, bottom: 0),
+            child: NavigationBar('/'),
           ),
         ),
         body: CenteredView(
-          newPadding: const EdgeInsets.symmetric(horizontal: 15, vertical: 1.0),
+          newPadding:
+              const EdgeInsets.symmetric(horizontal: 15, vertical: 15.0),
           child: ListView(
             primary: true,
             shrinkWrap: true,

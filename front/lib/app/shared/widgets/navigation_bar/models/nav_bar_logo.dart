@@ -5,7 +5,7 @@ class NavBarLogo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Image(
       alignment: Alignment.center,
-      height: 600,
+      height: MediaQuery.of(context).size.height * 0.06,
       image: AssetImage('assets/logo.png'),
     );
   }

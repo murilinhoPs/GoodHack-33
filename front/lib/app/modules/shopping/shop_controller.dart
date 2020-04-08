@@ -21,6 +21,13 @@ abstract class _ShopControllerBase with Store {
   }
 
   @observable
+  String storeName;
+  @action
+  name(newName) {
+    storeName = newName;
+  }
+
+  @observable
   String finalMessage = ' ';
 
   @action

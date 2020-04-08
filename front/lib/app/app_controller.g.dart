@@ -43,6 +43,57 @@ mixin _$AppController on _AppControllerBase, Store {
     }, _$nameAtom, name: '${_$nameAtom.name}_set');
   }
 
+  final _$iconAtom = Atom(name: '_AppControllerBase.icon');
+
+  @override
+  IconData get icon {
+    _$iconAtom.context.enforceReadPolicy(_$iconAtom);
+    _$iconAtom.reportObserved();
+    return super.icon;
+  }
+
+  @override
+  set icon(IconData value) {
+    _$iconAtom.context.conditionallyRunInAction(() {
+      super.icon = value;
+      _$iconAtom.reportChanged();
+    }, _$iconAtom, name: '${_$iconAtom.name}_set');
+  }
+
+  final _$themeAtom = Atom(name: '_AppControllerBase.theme');
+
+  @override
+  ThemeData get theme {
+    _$themeAtom.context.enforceReadPolicy(_$themeAtom);
+    _$themeAtom.reportObserved();
+    return super.theme;
+  }
+
+  @override
+  set theme(ThemeData value) {
+    _$themeAtom.context.conditionallyRunInAction(() {
+      super.theme = value;
+      _$themeAtom.reportChanged();
+    }, _$themeAtom, name: '${_$themeAtom.name}_set');
+  }
+
+  final _$colorAtom = Atom(name: '_AppControllerBase.color');
+
+  @override
+  Color get color {
+    _$colorAtom.context.enforceReadPolicy(_$colorAtom);
+    _$colorAtom.reportObserved();
+    return super.color;
+  }
+
+  @override
+  set color(Color value) {
+    _$colorAtom.context.conditionallyRunInAction(() {
+      super.color = value;
+      _$colorAtom.reportChanged();
+    }, _$colorAtom, name: '${_$colorAtom.name}_set');
+  }
+
   final _$_AppControllerBaseActionController =
       ActionController(name: '_AppControllerBase');
 
@@ -57,8 +108,19 @@ mixin _$AppController on _AppControllerBase, Store {
   }
 
   @override
+  dynamic changeTheme() {
+    final _$actionInfo = _$_AppControllerBaseActionController.startAction();
+    try {
+      return super.changeTheme();
+    } finally {
+      _$_AppControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
-    final string = 'id: ${id.toString()},name: ${name.toString()}';
+    final string =
+        'id: ${id.toString()},name: ${name.toString()},icon: ${icon.toString()},theme: ${theme.toString()},color: ${color.toString()}';
     return '{$string}';
   }
 }
