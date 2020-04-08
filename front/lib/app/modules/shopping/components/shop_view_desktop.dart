@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:good_hack/app/app_controller.dart';
 import 'package:good_hack/app/shared/services/controller_validator.dart';
@@ -9,6 +10,8 @@ import '../shop_controller.dart';
 class ShopViewDesktop extends StatefulWidget {
   final titleSize;
   final subtitleSize;
+
+  final appController = Modular.get<AppController>();
 
   ShopViewDesktop(this.titleSize, this.subtitleSize);
 
@@ -64,14 +67,16 @@ class _ShopViewDesktopState extends State<ShopViewDesktop> {
                     ),
                     Padding(
                       padding: const EdgeInsets.only(left: 10.0),
-                      child: SelectableText(
-                        Modular.get<AppController>().name == ' '
-                            ? 'Carrinho da loja'
-                            : '${Modular.get<AppController>().name}:',
-                        style: TextStyle(
-                          fontWeight: FontWeight.w800,
-                          height: 1.1,
-                          fontSize: widget.titleSize,
+                      child: Observer(
+                        builder: (_) => SelectableText(
+                          widget.appController.name == ' '
+                              ? 'Carrinho da loja'
+                              : '${widget.appController.name}:',
+                          style: TextStyle(
+                            fontWeight: FontWeight.w800,
+                            height: 1.1,
+                            fontSize: widget.titleSize,
+                          ),
                         ),
                       ),
                     ),

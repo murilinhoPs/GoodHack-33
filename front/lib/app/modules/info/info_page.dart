@@ -25,7 +25,7 @@ class _InfoPageState extends ModularState<InfoPage, InfoController> {
 
         return Scaffold(
           backgroundColor: Colors.white,
-          key: _appController.scaffoldKeyH,
+          key: _appController.scaffoldKeyI,
           drawer: size.isMobile ? NavDrawer() : null,
           appBar: PreferredSize(
             preferredSize: Size.fromHeight(100.0),

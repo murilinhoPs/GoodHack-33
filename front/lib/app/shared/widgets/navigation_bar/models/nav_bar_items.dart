@@ -1,18 +1,12 @@
 import 'package:flutter/material.dart';
 
 class NavBarItem extends StatelessWidget {
-  final String title;
+  final Widget title;
   final Function click;
   const NavBarItem({@required this.title, this.click});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialButton(
-      onPressed: () => click(),
-      child: Text(
-        title,
-        style: TextStyle(fontSize: 18),
-      ),
-    );
+    return MaterialButton(onPressed: () => click(), child: title);
   }
 }

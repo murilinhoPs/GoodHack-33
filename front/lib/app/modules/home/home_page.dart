@@ -20,6 +20,10 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends ModularState<HomePage, HomeController> {
   var _appController = Modular.get<AppController>();
 
+  // _HomePageState() {
+  //   _appController.scaffoldKeyH = GlobalKey<ScaffoldState>();
+  // }
+
   @override
   Widget build(BuildContext context) {
     return ResponsiveBuilder(

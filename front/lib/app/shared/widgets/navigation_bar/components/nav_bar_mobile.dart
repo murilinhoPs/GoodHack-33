@@ -33,9 +33,6 @@ class _NavBarMobileState extends ModularState<NavBarMobile, AppController> {
               onTap: () {
                 print(Modular.actualRoute);
 
-                print(controller.scaffoldKeyH.currentWidget);
-                print(controller.scaffoldKeyS.currentWidget);
-
                 if (Modular.actualRoute.contains('/loja')) {
                   controller.openS();
                 } else if (Modular.actualRoute == Modular.initialRoute)

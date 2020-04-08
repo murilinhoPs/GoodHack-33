@@ -23,7 +23,7 @@ class _NavBarDesktopState extends ModularState<NavBarDesktop, AppController> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
               NavBarItem(
-                  title: 'Início',
+                  title: Text('Início', style: TextStyle(fontSize: 18)),
                   click: () async {
                     print('Rota atual: ${Modular.actualRoute}');
 
@@ -34,19 +34,19 @@ class _NavBarDesktopState extends ModularState<NavBarDesktop, AppController> {
                 width: 15,
               ),
               NavBarItem(
-                  title: 'Sacola',
+                  title: Text('Sacola', style: TextStyle(fontSize: 18)),
                   click: () {
                     Modular.to.pushNamed('/loja/${controller.id}');
                   }),
               SizedBox(
                 width: 15,
               ),
-              NavBarItem(
-                title: 'Covid-19',
-                click: () {
-                  //Modular.to.pushNamed('/info');
-                },
-              ),
+              // NavBarItem(
+              //   title: Text('Covid-19', style: TextStyle(fontSize: 18)),
+              //   click: () {
+              //     Modular.to.pushNamed('/info');
+              //   },
+              // ),
             ],
           )
         ],

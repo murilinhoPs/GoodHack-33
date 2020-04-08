@@ -13,7 +13,7 @@ class _NavDrawerState extends ModularState<NavDrawer, AppController> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 300,
+      width: 280,
       decoration: BoxDecoration(
         color: Colors.white,
         boxShadow: [BoxShadow(color: Colors.black12, blurRadius: 16)],
@@ -23,7 +23,7 @@ class _NavDrawerState extends ModularState<NavDrawer, AppController> {
           NavDrawerHeader(),
           DrawerItem(
             title: 'Início',
-            icon: Icons.home,
+            iconWidget: Icon(Icons.home, size: 30.0),
             click: () {
               print('popUntil: initialRoute');
               Modular.to.popUntil(ModalRoute.withName(Modular.initialRoute));
@@ -31,20 +31,21 @@ class _NavDrawerState extends ModularState<NavDrawer, AppController> {
           ),
           DrawerItem(
             title: 'Sacola',
-            icon: Icons.shopping_basket,
+            iconWidget: Icon(Icons.shopping_basket, size: 30.0),
             click: () {
               print('popAndPushNamed: /loja/:id');
               Modular.to.popAndPushNamed('/loja/${controller.id}');
             },
           ),
-          DrawerItem(
-            title: 'Covid-19',
-            icon: Icons.healing,
-            click: () {
-              //print('pushNamed: /info');
-              // Navigator.pushNamed(context, '/info');
-            },
-          ),
+          // DrawerItem(
+          //   title: 'Covid-19',
+          //   iconWidget: Icon(Icons.healing, size: 30.0),
+          //   click: () {
+          //     //print('pushNamed: /info');
+
+          //     //ERROR: Modular.to.pushNamed('/info');
+          //   },
+          // ),
         ],
       ),
     );

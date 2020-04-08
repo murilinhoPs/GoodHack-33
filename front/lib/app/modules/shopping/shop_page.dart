@@ -31,7 +31,7 @@ class _ShopPageState extends ModularState<ShopPage, ShopController> {
         double subtitleSize = size.isMobile ? 18 : 26;
 
         return Scaffold(
-          key: widget.appController.scaffoldKeyS,
+          key: controller.scaffoldKeyS,
           drawer: size.isMobile ? NavDrawer() : null,
           appBar: PreferredSize(
             preferredSize: Size.fromHeight(100.0),
@@ -44,7 +44,7 @@ class _ShopPageState extends ModularState<ShopPage, ShopController> {
           body: CenteredView(
             newPadding:
                 const EdgeInsets.symmetric(horizontal: 15, vertical: 1.0),
-            child: widget.id == ' '
+            child: widget.appController.name == null
                 ? Text('Escolha uma loja')
                 : ScreenTypeLayout(
                     mobile: ShopViewMobile(titleSize, subtitleSize),

@@ -9,6 +9,8 @@ class ShopViewMobile extends StatefulWidget {
   final titleSize;
   final subtitleSize;
 
+  final appController = Modular.get<AppController>();
+
   ShopViewMobile(this.titleSize, this.subtitleSize);
 
   @override
@@ -64,9 +66,9 @@ class _ShopViewMobileState extends State<ShopViewMobile> {
                       Padding(
                         padding: const EdgeInsets.only(left: 10.0),
                         child: SelectableText(
-                          Modular.get<AppController>().name == ' '
+                          widget.appController.name == ' '
                               ? 'Carrinho da loja:'
-                              : '${Modular.get<AppController>().name}:',
+                              : '${widget.appController.name}:',
                           style: TextStyle(
                             fontWeight: FontWeight.w800,
                             height: 1.1,

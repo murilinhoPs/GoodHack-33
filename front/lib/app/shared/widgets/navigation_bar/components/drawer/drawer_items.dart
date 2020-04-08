@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 
 class DrawerItem extends StatelessWidget {
   final String title;
-  final IconData icon;
+  final Widget iconWidget;
   final Function click;
 
-  const DrawerItem({@required this.title, @required this.icon, this.click});
+  const DrawerItem(
+      {@required this.title, @required this.iconWidget, this.click});
 
   @override
   Widget build(BuildContext context) {
@@ -15,10 +16,7 @@ class DrawerItem extends StatelessWidget {
         onPressed: () => click(),
         child: Row(
           children: <Widget>[
-            Icon(
-              icon,
-              size: 30.0,
-            ),
+            iconWidget,
             SizedBox(
               width: 15.0,
             ),

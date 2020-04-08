@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:good_hack/app/shared/models/email_model.dart';
 import 'package:good_hack/app/shared/models/sms_model.dart';
 import 'package:good_hack/app/shared/services/api_repository.dart';
@@ -9,7 +10,15 @@ class ShopController = _ShopControllerBase with _$ShopController;
 abstract class _ShopControllerBase with Store {
   final ApiRepository _repository;
 
-  _ShopControllerBase(this._repository);
+  _ShopControllerBase(this._repository) {
+    scaffoldKeyS = GlobalKey<ScaffoldState>();
+  }
+
+  GlobalKey<ScaffoldState> scaffoldKeyS;
+
+  void openS() {
+    scaffoldKeyS.currentState.openDrawer();
+  }
 
   @observable
   String finalMessage = ' ';
