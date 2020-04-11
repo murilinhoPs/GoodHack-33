@@ -13,8 +13,6 @@ import 'shop_controller.dart';
 class ShopPage extends StatefulWidget {
   final String id;
 
-  final appController = Modular.get<AppController>();
-
   ShopPage({Key key, this.id}) : super(key: key);
 
   @override
@@ -22,6 +20,8 @@ class ShopPage extends StatefulWidget {
 }
 
 class _ShopPageState extends ModularState<ShopPage, ShopController> {
+  final appController = Modular.get<AppController>();
+
   @override
   Widget build(BuildContext context) {
     return ResponsiveBuilder(
@@ -31,7 +31,7 @@ class _ShopPageState extends ModularState<ShopPage, ShopController> {
         double subtitleSize = size.isMobile ? 18 : 26;
 
         return Scaffold(
-          key: widget.appController.scaffoldKeyS,
+          key: appController.scaffoldKeyS,
           drawer: size.isMobile ? NavDrawer('/loja') : null,
           appBar: PreferredSize(
             preferredSize: Size.fromHeight(size.screenSize.height * 0.07),
@@ -45,10 +45,12 @@ class _ShopPageState extends ModularState<ShopPage, ShopController> {
             newPadding:
                 const EdgeInsets.symmetric(horizontal: 15, vertical: 15.0),
             child: widget.id == null
-                ? Text('Escolha uma loja')
+                ? Text('Id: ${widget.id}')
                 : ScreenTypeLayout(
-                    mobile: ShopViewMobile(titleSize, subtitleSize),
-                    desktop: ShopViewDesktop(titleSize, subtitleSize),
+                    mobile: ShopViewMobile(
+                        titleSize, subtitleSize, appController.name),
+                    desktop: ShopViewDesktop(
+                        titleSize, subtitleSize, appController.name),
                   ),
           ),
         );

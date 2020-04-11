@@ -7,113 +7,135 @@ import 'package:multi_masked_formatter/multi_masked_formatter.dart';
 
 import '../shop_controller.dart';
 
-class ShopViewDesktop extends StatefulWidget {
+// class ShopViewDesktop extends StatefulWidget {
+// final titleSize;
+// final subtitleSize;
+
+// final appController = Modular.get<AppController>();
+
+//   ShopViewDesktop(this.titleSize, this.subtitleSize);
+
+//   @override
+//   _ShopViewDesktopState createState() => _ShopViewDesktopState();
+// }
+
+class ShopViewDesktop extends StatelessWidget {
+  //State<ShopViewDesktop> {
+
   final titleSize;
   final subtitleSize;
+  final storeName;
+
+  ShopViewDesktop(this.titleSize, this.subtitleSize, this.storeName);
 
   final appController = Modular.get<AppController>();
 
-  ShopViewDesktop(this.titleSize, this.subtitleSize);
-
-  @override
-  _ShopViewDesktopState createState() => _ShopViewDesktopState();
-}
-
-class _ShopViewDesktopState extends State<ShopViewDesktop> {
   final _controller = TextEditingController();
-
   final _numberController = TextEditingController();
-
   final _emailController = TextEditingController();
+  final _nameController = TextEditingController();
 
   final _formFocus = FocusNode();
-
   final _numberFocus = FocusNode();
-
   final _emailFocus = FocusNode();
+  final _nameFocus = FocusNode();
 
   final _mobxController = Modular.get<ShopController>();
-
-  String finalMessage;
-
-  String finalNumber;
-
-  String finalEmail;
 
   final Controller formController = Controller();
 
   @override
   Widget build(BuildContext context) {
+    String finalMessage;
+    String finalNumber;
+    String finalEmail;
+    String finalName;
+
     return Form(
       key: formController.formKey,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         mainAxisSize: MainAxisSize.max,
-        crossAxisAlignment: CrossAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Padding(
-                padding: EdgeInsets.only(left: 30.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Container(
-                      child: Icon(
-                        Icons.add_shopping_cart,
-                        size: 100.0,
+          Padding(
+            padding: EdgeInsets.only(left: 30.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Container(
+                  child: Icon(
+                    Icons.add_shopping_cart,
+                    size: 90.0,
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 10.0),
+                  child: Observer(
+                    builder: (_) => SelectableText(
+                      storeName == ' '
+                          ? 'Carrinho da loja: ${appController.name}'
+                          : '$storeName:',
+                      style: TextStyle(
+                        fontWeight: FontWeight.w800,
+                        height: 1.1,
+                        fontSize: titleSize,
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 10.0),
-                      child: Observer(
-                        builder: (_) => SelectableText(
-                          widget.appController.name == ' '
-                              ? 'Carrinho da loja'
-                              : '${widget.appController.name}:',
-                          style: TextStyle(
-                            fontWeight: FontWeight.w800,
-                            height: 1.1,
-                            fontSize: widget.titleSize,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
+                  ),
                 ),
-              ),
-              SizedBox(width: 40),
-              Container(
-                width: 350,
-                child: TextFormField(
-                  controller: _controller,
-                  enableInteractiveSelection: true,
-                  maxLines: null,
-                  autovalidate: false,
-                  autofocus: false,
-                  cursorColor: Color.fromARGB(255, 255, 182, 72),
-                  focusNode: _formFocus,
-                  keyboardType: TextInputType.multiline,
-                  decoration: InputDecoration(
-                      labelText: 'Escreva seu pedido',
-                      hintText: '1 pão de batata\n2 bolacha salgada'),
-                  validator: (value) {
-                    if (value.isEmpty) return 'Escreva algo';
-                    return null;
-                  },
-                  onChanged: (value) {
-                    finalMessage = value;
-                  },
+                SizedBox(width: 30),
+                Container(
+                  width: 280,
+                  child: TextFormField(
+                    controller: _controller,
+                    enableInteractiveSelection: true,
+                    maxLines: null,
+                    autovalidate: false,
+                    autofocus: false,
+                    cursorColor: Color.fromARGB(255, 255, 182, 72),
+                    focusNode: _formFocus,
+                    keyboardType: TextInputType.multiline,
+                    decoration: InputDecoration(
+                        labelText: 'Escreva seu pedido',
+                        hintText: '1 pão de batata\n2 bolacha salgada'),
+                    validator: (value) {
+                      if (value.isEmpty) return 'Escreva algo';
+                      return null;
+                    },
+                    onChanged: (value) {
+                      finalMessage = value;
+                    },
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Container(
-                width: 300,
+                width: 150,
+                child: TextFormField(
+                  enableInteractiveSelection: true,
+                  controller: _nameController,
+                  autofocus: false,
+                  keyboardType: TextInputType.text,
+                  focusNode: _nameFocus,
+                  decoration: InputDecoration(
+                      labelText: 'Nome', hintText: 'Primeiro Nome'),
+                  validator: (_) {
+                    if (_.isEmpty) return 'Escreva seu nome';
+                    return null;
+                  },
+                  onChanged: (value) {
+                    finalName = value;
+                  },
+                ),
+              ),
+              SizedBox(width: 20.0),
+              Container(
+                width: 200,
                 child: TextFormField(
                   enableInteractiveSelection: true,
                   controller: _numberController,
@@ -134,7 +156,8 @@ class _ShopViewDesktopState extends State<ShopViewDesktop> {
 
                     RegExp regExp = new RegExp(patttern);
 
-                    if (!regExp.hasMatch(finalNumber)) {
+                    if (!regExp.hasMatch(finalNumber) ||
+                        finalNumber.length > 15) {
                       return 'Please enter valid mobile number';
                     }
                     return null;
@@ -143,7 +166,7 @@ class _ShopViewDesktopState extends State<ShopViewDesktop> {
               ),
               SizedBox(width: 20.0),
               Container(
-                width: 300,
+                width: 200,
                 child: TextFormField(
                   enableInteractiveSelection: true,
                   controller: _emailController,
@@ -165,6 +188,7 @@ class _ShopViewDesktopState extends State<ShopViewDesktop> {
           ),
           SizedBox(height: 40),
           Row(
+            mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               RaisedButton(
@@ -174,26 +198,24 @@ class _ShopViewDesktopState extends State<ShopViewDesktop> {
                   style: TextStyle(
                     fontWeight: FontWeight.w800,
                     height: 1.0,
-                    fontSize: widget.subtitleSize,
+                    fontSize: subtitleSize,
                   ),
                 ),
                 onPressed: () async {
-                  _formFocus.unfocus();
-                  _emailFocus.unfocus();
-                  _numberFocus.unfocus();
+                  //_uncofusFields();
 
                   finalNumber =
                       '+55' + _numberController.text.replaceAll('-', "");
 
                   if (formController.validade()) {
                     _mobxController.postOrder(
-                        msg: finalMessage,
-                        telefone: finalNumber,
-                        email: finalEmail);
+                      msg: finalMessage,
+                      telefone: finalNumber,
+                      email: finalEmail,
+                      nome: finalName,
+                    );
 
-                    _numberController.clear();
-                    _controller.clear();
-                    _emailController.clear();
+                    _cleanFields();
                   }
                 },
               ),
@@ -204,4 +226,18 @@ class _ShopViewDesktopState extends State<ShopViewDesktop> {
       ),
     );
   }
+
+  _cleanFields() {
+    _numberController.clear();
+    _controller.clear();
+    _emailController.clear();
+    _nameController.clear();
+  }
+
+  // _uncofusFields() {
+  //   _formFocus.unfocus();
+  //   _emailFocus.unfocus();
+  //   _numberFocus.unfocus();
+  //   _nameFocus.unfocus();
+  // }
 }

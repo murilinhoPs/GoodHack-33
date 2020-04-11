@@ -18,7 +18,7 @@ mongoose.connect(
 );
 
 // app.options('/lojas', cors());
-// app.options('/services/email', cors());
+app.options('/services/email', cors());
 // app.options('/services/message', cors());
 
 app.use(express.json());

@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:good_hack/app/shared/models/email_model.dart';
 import 'package:good_hack/app/shared/models/sms_model.dart';
 import 'package:good_hack/app/shared/services/api_repository.dart';
@@ -10,15 +9,7 @@ class ShopController = _ShopControllerBase with _$ShopController;
 abstract class _ShopControllerBase with Store {
   final ApiRepository _repository;
 
-  _ShopControllerBase(this._repository) {
-    scaffoldKeyS = GlobalKey<ScaffoldState>();
-  }
-
-  GlobalKey<ScaffoldState> scaffoldKeyS;
-
-  void openS() {
-    scaffoldKeyS.currentState.openDrawer();
-  }
+  _ShopControllerBase(this._repository);
 
   @observable
   String storeName;
@@ -31,10 +22,13 @@ abstract class _ShopControllerBase with Store {
   String finalMessage = ' ';
 
   @action
-  postOrder({String msg, String email, String telefone, String loja}) async {
+  postOrder(
+      {String msg,
+      String email,
+      String telefone,
+      String loja,
+      String nome}) async {
     finalMessage = msg;
-
-    //print(finalMessage);
 
     print(email);
 
@@ -45,9 +39,22 @@ abstract class _ShopControllerBase with Store {
                   from: "+12135684050",
                   to: "+5511954364143",
                   body:
-                      'Confira o novo pedido no seu email! Confira se não está no Spam ou na Lixeira.\n$finalMessage \nContato: $telefone')
+                      'Confira o novo pedido no seu email! Confira se não está no Spam ou na Lixeira.\n$finalMessage \nNome e contato: $nome, $telefone e $email')
               .toJson(),
         );
+
+        await _repository.postEmail(
+          EmailModel(
+                  to: "murilinhorps@gmail.com",
+                  from: "murilinhops@hotmail.com",
+                  subject: "Pedido",
+                  text: "$finalMessage \nContato: $nome, $telefone e $email",
+                  html:
+                      "<t>$finalMessage<br> Contato: $nome, $telefone e $email</t>")
+              .toJson(),
+        );
+
+        print(finalMessage);
 
         await _repository.postMessage(
           MessageModel(
@@ -56,18 +63,6 @@ abstract class _ShopControllerBase with Store {
                   body: 'Confira seu pedido. \n$finalMessage')
               .toJson(),
         );
-
-        await _repository.postEmail(
-          EmailModel(
-            to: "murilinhorps@gmail.com",
-            from: email,
-            subject: "Pedido",
-            text: '$finalMessage \nContato: $telefone',
-            html: "<t>$finalMessage \nContato: $telefone'</t>",
-          ).toJson(),
-        );
-
-        print(finalMessage);
       } catch (e) {
         print('Error Message: ${e.message}');
       }

@@ -33,13 +33,13 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
           preferredSize: Size.fromHeight(size.screenSize.height * 0.07),
           child: CenteredView(
             newPadding: const EdgeInsets.only(
-                right: 15, left: 15.0, top: 8.0, bottom: 0),
+                right: 20, left: 20.0, top: 8.0, bottom: 0),
             child: NavigationBar('/'),
           ),
         ),
         body: CenteredView(
           newPadding:
-              const EdgeInsets.symmetric(horizontal: 15, vertical: 15.0),
+              const EdgeInsets.symmetric(horizontal: 20, vertical: 30.0),
           child: ListView(
             primary: true,
             shrinkWrap: true,

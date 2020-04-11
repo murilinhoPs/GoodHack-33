@@ -46,9 +46,10 @@ mixin _$ShopController on _ShopControllerBase, Store {
   final _$postOrderAsyncAction = AsyncAction('postOrder');
 
   @override
-  Future postOrder({String msg, String email, String telefone, String loja}) {
-    return _$postOrderAsyncAction.run(() => super
-        .postOrder(msg: msg, email: email, telefone: telefone, loja: loja));
+  Future postOrder(
+      {String msg, String email, String telefone, String loja, String nome}) {
+    return _$postOrderAsyncAction.run(() => super.postOrder(
+        msg: msg, email: email, telefone: telefone, loja: loja, nome: nome));
   }
 
   final _$_ShopControllerBaseActionController =

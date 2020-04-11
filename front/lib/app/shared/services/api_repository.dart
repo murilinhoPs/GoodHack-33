@@ -39,6 +39,8 @@ class ApiRepository extends Disposable {
     if (response.statusCode == 200) {
       //print("httpDebug: $_url \n $body}");
 
+      print('Message ${response.statusCode}');
+
       return response.statusCode;
     } else {
       print(response.statusCode);
@@ -53,7 +55,9 @@ class ApiRepository extends Disposable {
         ),
         data: body);
     if (response.statusCode == 200) {
-      //print("httpDebug: $_url \n $body}");
+      print("httpDebug: $body}");
+
+      print('Email ${response.statusCode}');
 
       return response.statusCode;
     } else {

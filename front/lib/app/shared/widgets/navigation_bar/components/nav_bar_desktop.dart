@@ -35,9 +35,13 @@ class _NavBarDesktopState extends ModularState<NavBarDesktop, AppController> {
                   click: () async {
                     print('Rota atual: ${Modular.actualRoute}');
 
-                    if (widget.route != '/')
+                    print('pushNamed: /loja/:${controller.id}');
+                    print('NomeDaLoja: ${controller.name}');
+
+                    if (widget.route != '/') {
                       Modular.to
                           .popUntil(ModalRoute.withName(Modular.initialRoute));
+                    }
                   }),
               SizedBox(
                 width: 15,
@@ -45,8 +49,12 @@ class _NavBarDesktopState extends ModularState<NavBarDesktop, AppController> {
               NavBarItem(
                 title: Text('Sacola', style: TextStyle(fontSize: 18)),
                 click: () {
-                  if (widget.route != '/loja')
+                  if (widget.route != '/loja') {
+                    print('pushNamed: /loja/:${controller.id}');
+                    print('NomeDaLoja: ${controller.name}');
+
                     Modular.to.pushNamed('/loja/${controller.id}');
+                  }
                 },
               ),
               SizedBox(
@@ -56,7 +64,7 @@ class _NavBarDesktopState extends ModularState<NavBarDesktop, AppController> {
                 title: Text('Covid-19', style: TextStyle(fontSize: 18)),
                 click: () {
                   if (widget.route != '/info') {
-                    print('pushNamed: /info');
+                    //print('pushNamed: /info');
 
                     Modular.to.pushNamed('/info');
                   } else

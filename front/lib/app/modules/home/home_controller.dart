@@ -9,7 +9,9 @@ class HomeController = _HomeControllerBase with _$HomeController;
 abstract class _HomeControllerBase with Store {
   final ApiRepository _repository;
 
-  _HomeControllerBase(this._repository);
+  _HomeControllerBase(this._repository) {
+    fetchMarkets();
+  }
 
   @observable
   List<MarketModel> markets = [];

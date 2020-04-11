@@ -13,12 +13,6 @@ class Markets extends StatefulWidget {
 }
 
 class _MarketsState extends ModularState<Markets, HomeController> {
-  @override
-  void initState() {
-    controller.fetchMarkets();
-    super.initState();
-  }
-
   Widget build(BuildContext context) {
     return ResponsiveBuilder(builder: (context, size) {
       var textAlignment = size.isDesktop ? TextAlign.left : TextAlign.center;

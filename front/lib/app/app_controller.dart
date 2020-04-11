@@ -40,7 +40,7 @@ abstract class _AppControllerBase with Store {
     name = newName;
 
     print(id);
-    print(newName);
+    print(name);
 
     Modular.to.pushNamed('/loja/$id');
   }
@@ -61,6 +61,7 @@ abstract class _AppControllerBase with Store {
     print('changeTheme');
 
     if (icon == Icons.brightness_7) {
+      //scaffoldKeyH.currentState.build(context);
       icon = Icons.brightness_3;
 
       theme = darkTheme;

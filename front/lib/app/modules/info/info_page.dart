@@ -22,7 +22,7 @@ class _InfoPageState extends ModularState<InfoPage, InfoController> {
         double fontSize = size.isMobile ? 24 : 32;
 
         return Scaffold(
-          backgroundColor: Colors.white,
+          backgroundColor: Modular.get<AppController>().color,
           key: widget.appController.scaffoldKeyI,
           drawer: size.isMobile ? NavDrawer('/info') : null,
           appBar: PreferredSize(
