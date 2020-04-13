@@ -7,27 +7,18 @@ import 'package:multi_masked_formatter/multi_masked_formatter.dart';
 
 import '../shop_controller.dart';
 
-// class ShopViewDesktop extends StatefulWidget {
-// final titleSize;
-// final subtitleSize;
-
-// final appController = Modular.get<AppController>();
-
-//   ShopViewDesktop(this.titleSize, this.subtitleSize);
-
-//   @override
-//   _ShopViewDesktopState createState() => _ShopViewDesktopState();
-// }
-
-class ShopViewDesktop extends StatelessWidget {
-  //State<ShopViewDesktop> {
-
+class ShopViewDesktop extends StatefulWidget {
   final titleSize;
   final subtitleSize;
   final storeName;
 
   ShopViewDesktop(this.titleSize, this.subtitleSize, this.storeName);
 
+  @override
+  _ShopViewDesktopState createState() => _ShopViewDesktopState();
+}
+
+class _ShopViewDesktopState extends State<ShopViewDesktop> {
   final appController = Modular.get<AppController>();
 
   final _controller = TextEditingController();
@@ -73,13 +64,13 @@ class ShopViewDesktop extends StatelessWidget {
                   padding: const EdgeInsets.only(left: 10.0),
                   child: Observer(
                     builder: (_) => SelectableText(
-                      storeName == ' '
+                      widget.storeName == ' '
                           ? 'Carrinho da loja: ${appController.name}'
-                          : '$storeName:',
+                          : '${widget.storeName}:',
                       style: TextStyle(
                         fontWeight: FontWeight.w800,
                         height: 1.1,
-                        fontSize: titleSize,
+                        fontSize: widget.titleSize,
                       ),
                     ),
                   ),
@@ -151,13 +142,14 @@ class ShopViewDesktop extends StatelessWidget {
                   decoration: InputDecoration(
                       labelText: 'Seu celular',
                       hintText: '15 1234-5678 ou 11 91234-5678'),
-                  validator: (_) {
+                  validator: (value) {
                     String patttern = r'(^(?:[+]5)?[0-9]{12,13})';
 
                     RegExp regExp = new RegExp(patttern);
 
                     if (!regExp.hasMatch(finalNumber) ||
-                        finalNumber.length > 15) {
+                        finalNumber.length > 15 ||
+                        value.isEmpty) {
                       return 'Please enter valid mobile number';
                     }
                     return null;
@@ -198,7 +190,7 @@ class ShopViewDesktop extends StatelessWidget {
                   style: TextStyle(
                     fontWeight: FontWeight.w800,
                     height: 1.0,
-                    fontSize: subtitleSize,
+                    fontSize: widget.subtitleSize,
                   ),
                 ),
                 onPressed: () async {
@@ -233,11 +225,4 @@ class ShopViewDesktop extends StatelessWidget {
     _emailController.clear();
     _nameController.clear();
   }
-
-  // _uncofusFields() {
-  //   _formFocus.unfocus();
-  //   _emailFocus.unfocus();
-  //   _numberFocus.unfocus();
-  //   _nameFocus.unfocus();
-  // }
 }

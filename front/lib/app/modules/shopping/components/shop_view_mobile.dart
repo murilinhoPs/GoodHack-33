@@ -6,14 +6,21 @@ import 'package:good_hack/app/modules/shopping/shop_controller.dart';
 import 'package:good_hack/app/shared/services/controller_validator.dart';
 import 'package:multi_masked_formatter/multi_masked_formatter.dart';
 
-class ShopViewMobile extends StatelessWidget {
+class ShopViewMobile extends StatefulWidget {
   final titleSize;
   final subtitleSize;
   final storeName;
 
-  final appController = Modular.get<AppController>();
-
   ShopViewMobile(this.titleSize, this.subtitleSize, this.storeName);
+
+  static final Controller formController = Controller();
+
+  @override
+  _ShopViewMobileState createState() => _ShopViewMobileState();
+}
+
+class _ShopViewMobileState extends State<ShopViewMobile> {
+  final appController = Modular.get<AppController>();
 
   final _controller = TextEditingController();
   final _numberController = TextEditingController();
@@ -27,8 +34,6 @@ class ShopViewMobile extends StatelessWidget {
 
   final _mobxController = Modular.get<ShopController>();
 
-  static final Controller formController = Controller();
-
   @override
   Widget build(BuildContext context) {
     String finalMessage;
@@ -37,7 +42,7 @@ class ShopViewMobile extends StatelessWidget {
     String finalName;
 
     return Form(
-      key: formController.formKey,
+      key: ShopViewMobile.formController.formKey,
       child: GestureDetector(
         onTap: () {
           _formFocus.unfocus();
@@ -73,7 +78,7 @@ class ShopViewMobile extends StatelessWidget {
                             style: TextStyle(
                               fontWeight: FontWeight.w800,
                               height: 1.1,
-                              fontSize: titleSize,
+                              fontSize: widget.titleSize,
                             ),
                           ),
                         ),
@@ -112,6 +117,9 @@ class ShopViewMobile extends StatelessWidget {
                   child: TextFormField(
                     enableInteractiveSelection: true,
                     controller: _nameController,
+                    onTap: () {
+                      _nameFocus.requestFocus();
+                    },
                     autofocus: false,
                     keyboardType: TextInputType.text,
                     focusNode: _nameFocus,
@@ -130,36 +138,63 @@ class ShopViewMobile extends StatelessWidget {
                   width: 350,
                   child: TextFormField(
                     enableInteractiveSelection: true,
+                    autofocus: false,
                     controller: _numberController,
+                    inputFormatters: [
+                      MultiMaskedTextInputFormatter(
+                          masks: ['xx-xxxxx-xxxx'], separator: '-'),
+                    ],
+                    decoration: InputDecoration(
+                        labelText: 'Seu número', hintText: '99-99999-9999'),
+                    focusNode: _numberFocus,
                     onTap: () {
                       _numberFocus.requestFocus();
                     },
-                    inputFormatters: [
-                      MultiMaskedTextInputFormatter(
-                          masks: ['xx-xxxxx-xxxx'], separator: '-')
-                    ],
-                    //autovalidate: true,
-                    autofocus: false,
-                    //autovalidate: true,
-                    keyboardType: TextInputType.number,
-                    focusNode: _numberFocus,
-                    decoration: InputDecoration(
-                        labelText: 'Seu celular', hintText: '15 91234-5678'),
-                    validator: (_) {
-                      String patttern = r'(^(?:[+]5)?[0-9]{12,13})';
-                      //String patttern8 = r'(^(?:[+]5)?[0-8]{12,13})';
+                    validator: (value) {
+                      String pattern = r'(^(?:[+]5)?[0-9]{12,13})';
 
-                      RegExp regExp = new RegExp(patttern);
-                      //RegExp newRegExp = new RegExp(patttern8);
+                      RegExp regExp = RegExp(pattern);
 
                       if (!regExp.hasMatch(finalNumber) ||
-                          finalNumber.length > 15) {
-                        return 'Please enter valid mobile number';
+                          finalNumber.length > 15 ||
+                          value.isEmpty) {
+                        return 'Coloque um número válido.';
                       }
                       return null;
                     },
                   ),
                 ),
+                // Container(
+                //   width: 350,
+                //   child: TextFormField(
+                //     enableInteractiveSelection: true,
+                //     controller: _numberController,
+                //     onTap: () {
+                //       _numberFocus.requestFocus();
+                //     },
+                //     inputFormatters: [
+                //       MultiMaskedTextInputFormatter(
+                //           masks: ['xx-xxxxx-xxxx'], separator: '-')
+                //     ],
+                //     autofocus: false,
+                //     keyboardType: TextInputType.number,
+                //     focusNode: _numberFocus,
+                //     decoration: InputDecoration(
+                //         labelText: 'Seu celular', hintText: '15 91234-5678'),
+                //     validator: (value) {
+                //       String patttern = r'(^(?:[+]5)?[0-9]{12,13})';
+
+                //       RegExp regExp = new RegExp(patttern);
+
+                //       if (!regExp.hasMatch(finalNumber) ||
+                //           finalNumber.length > 15 ||
+                //           value.isEmpty) {
+                //         return 'Coloque um número válido.';
+                //       }
+                //       return null;
+                //     },
+                //   ),
+                // ),
                 Container(
                   width: 350,
                   child: TextFormField(
@@ -193,14 +228,14 @@ class ShopViewMobile extends StatelessWidget {
                         style: TextStyle(
                           fontWeight: FontWeight.w800,
                           height: 1.0,
-                          fontSize: subtitleSize,
+                          fontSize: widget.subtitleSize,
                         ),
                       ),
                       onPressed: () async {
                         finalNumber =
                             '+55' + _numberController.text.replaceAll('-', "");
 
-                        if (formController.validade()) {
+                        if (ShopViewMobile.formController.validade()) {
                           _mobxController.postOrder(
                               msg: finalMessage,
                               telefone: finalNumber,
@@ -208,6 +243,8 @@ class ShopViewMobile extends StatelessWidget {
                               nome: finalName);
 
                           _cleanFields();
+
+                          _uncofusFields();
                         }
                       },
                     ),
@@ -229,10 +266,10 @@ class ShopViewMobile extends StatelessWidget {
     _nameController.clear();
   }
 
-  // _uncofusFields() {
-  //   _formFocus.unfocus();
-  //   _emailFocus.unfocus();
-  //   _numberFocus.unfocus();
-  //   _nameFocus.unfocus();
-  // }
+  _uncofusFields() {
+    _formFocus.unfocus();
+    _emailFocus.unfocus();
+    _numberFocus.unfocus();
+    _nameFocus.unfocus();
+  }
 }
