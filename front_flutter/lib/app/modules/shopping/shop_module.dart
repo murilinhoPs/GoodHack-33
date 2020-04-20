@@ -14,7 +14,7 @@ class ShopModule extends ChildModule {
         Router(
           '/:id',
           child: (_, args) => ShopPage(
-            id: args.params.isEmpty ? '_' : args.params['id'],
+            id: args.params['id'],
           ),
         ),
       ];

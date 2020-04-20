@@ -34,7 +34,6 @@ class _NavDrawerState extends ModularState<NavDrawer, AppController> {
               iconWidget: Icon(Icons.home, size: 30.0),
               click: () {
                 if (widget.route != '/') {
-                  print('popUntil: /');
                   Modular.to.popUntil(ModalRoute.withName('/'));
                 } else
                   Modular.to.pop();
@@ -44,10 +43,10 @@ class _NavDrawerState extends ModularState<NavDrawer, AppController> {
               title: 'Sacola',
               iconWidget: Icon(Icons.shopping_basket, size: 30.0),
               click: () {
-                print('NomeDaLoja: ${controller.name}');
+                // print('NomeDaLoja: ${controller.name}');
 
                 if (widget.route != '/loja') {
-                  print('PushNamed: /loja/:${controller.id}');
+                  // print('PushNamed: /loja/:${controller.id}');
 
                   Modular.to.pushNamed('/loja/${controller.id}');
                 } else

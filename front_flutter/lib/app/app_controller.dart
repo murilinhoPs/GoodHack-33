@@ -69,9 +69,9 @@ abstract class _AppControllerBase with Store {
 
       color = Colors.black;
 
-      print(icon);
-      print(theme);
-      print(color);
+      // print(icon);
+      // print(theme);
+      // print(color);
     } else {
       icon = Icons.brightness_7;
 
@@ -79,9 +79,9 @@ abstract class _AppControllerBase with Store {
 
       color = Colors.white;
 
-      print(icon);
-      print(theme);
-      print(color);
+      // print(icon);
+      // print(theme);
+      // print(color);
     }
   }
 }

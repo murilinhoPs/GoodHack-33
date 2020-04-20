@@ -18,11 +18,7 @@ class _NavBarDesktopState extends ModularState<NavBarDesktop, AppController> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 100,
-      // decoration: BoxDecoration(
-      //     border: Border(
-      //   bottom: BorderSide(width: 0.5, color: Colors.black),
-      // )),
+      // height: 100,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
@@ -34,10 +30,10 @@ class _NavBarDesktopState extends ModularState<NavBarDesktop, AppController> {
               NavBarItem(
                   title: Text('Início', style: TextStyle(fontSize: 18)),
                   click: () async {
-                    print('Rota atual: ${Modular.actualRoute}');
+                    // print('Rota atual: ${Modular.actualRoute}');
 
-                    print('pushNamed: /loja/:${controller.id}');
-                    print('NomeDaLoja: ${controller.name}');
+                    // print('pushNamed: /loja/:${controller.id}');
+                    // print('NomeDaLoja: ${controller.name}');
 
                     if (widget.route != '/') {
                       Modular.to
@@ -51,8 +47,8 @@ class _NavBarDesktopState extends ModularState<NavBarDesktop, AppController> {
                 title: Text('Sacola', style: TextStyle(fontSize: 18)),
                 click: () {
                   if (widget.route != '/loja') {
-                    print('pushNamed: /loja/:${controller.id}');
-                    print('NomeDaLoja: ${controller.name}');
+                    // print('pushNamed: /loja/:${controller.id}');
+                    // print('NomeDaLoja: ${controller.name}');
 
                     Modular.to.pushNamed('/loja/${controller.id}');
                   }
@@ -64,12 +60,12 @@ class _NavBarDesktopState extends ModularState<NavBarDesktop, AppController> {
               NavBarItem(
                 title: Text('Covid-19', style: TextStyle(fontSize: 18)),
                 click: () {
+                  print('Rota atual/anterior: ${Modular.actualRoute}');
                   if (widget.route != '/info') {
                     //print('pushNamed: /info');
 
                     Modular.to.pushNamed('/info');
-                  } else
-                    Modular.to.pop();
+                  }
                 },
               ),
               NavBarItem(

@@ -13,7 +13,9 @@ import 'shop_controller.dart';
 class ShopPage extends StatefulWidget {
   final String id;
 
-  ShopPage({Key key, this.id}) : super(key: key);
+  ShopPage({Key key, this.id}) {
+    print('ShopId: ${this.id}');
+  }
 
   @override
   _ShopPageState createState() => _ShopPageState();
