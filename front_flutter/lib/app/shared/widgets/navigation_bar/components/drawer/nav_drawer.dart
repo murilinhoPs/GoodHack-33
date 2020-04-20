@@ -68,15 +68,15 @@ class _NavDrawerState extends ModularState<NavDrawer, AppController> {
                   Modular.to.pop();
               },
             ),
-            DrawerItem(
-              title: 'Tema',
-              iconWidget: Observer(
-                builder: (_) => Icon(controller.icon),
-              ),
-              click: () {
-                controller.changeTheme();
-              },
-            ),
+            // DrawerItem(
+            //   title: 'Tema',
+            //   iconWidget: Observer(
+            //     builder: (_) => Icon(controller.icon),
+            //   ),
+            //   click: () {
+            //     controller.changeTheme();
+            //   },
+            // ),
           ],
         ),
       ),
