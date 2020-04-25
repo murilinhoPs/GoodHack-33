@@ -43,10 +43,8 @@ class _NavDrawerState extends ModularState<NavDrawer, AppController> {
               title: 'Sacola',
               iconWidget: Icon(Icons.shopping_basket, size: 30.0),
               click: () {
-                // print('NomeDaLoja: ${controller.name}');
-
                 if (widget.route != '/loja') {
-                  // print('PushNamed: /loja/:${controller.id}');
+                  print('PushNamed: /loja/:${controller.id}');
 
                   Modular.to.pushNamed('/loja/${controller.id}');
                 } else
@@ -60,10 +58,7 @@ class _NavDrawerState extends ModularState<NavDrawer, AppController> {
                 if (widget.route != '/info') {
                   print('pushNamed: /info');
 
-                  if (controller.scaffoldKeyS.currentState != null)
-                    //   Modular.to.pushReplacementNamed('/info');
-                    // else
-                    Modular.to.pushNamed('/info');
+                  Modular.to.pushNamed('/info');
                 } else
                   Modular.to.pop();
               },

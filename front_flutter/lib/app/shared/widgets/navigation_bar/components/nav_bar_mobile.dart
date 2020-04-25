@@ -34,18 +34,20 @@ class _NavBarMobileState extends ModularState<NavBarMobile, AppController> {
                 onTap: () {
                   print(Modular.actualRoute);
 
+                  Scaffold.of(context).openDrawer();
+
                   print('H: ${controller.scaffoldKeyH.currentState}');
                   print('S: ${controller.scaffoldKeyS.currentState}');
                   print('I: ${controller.scaffoldKeyI.currentState}');
 
-                  if (controller.scaffoldKeyH.currentState != null)
-                    controller.open();
-                  else if (controller.scaffoldKeyS.currentState != null) {
-                    controller.openS();
-                  } else if (controller.scaffoldKeyI.currentState != null) {
-                    controller.openI();
-                  } else
-                    return;
+                  // if (controller.scaffoldKeyH.currentState != null)
+                  //   controller.open();
+                  // else if (controller.scaffoldKeyS.currentState != null) {
+                  //   controller.openS();
+                  // } else if (controller.scaffoldKeyI.currentState != null) {
+                  //   controller.openI();
+                  // } else
+                  //   return;
                 },
               ),
             ),

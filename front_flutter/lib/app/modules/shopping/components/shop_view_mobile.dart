@@ -72,9 +72,9 @@ class _ShopViewMobileState extends State<ShopViewMobile> {
                         padding: const EdgeInsets.only(left: 10.0),
                         child: Observer(
                           builder: (_) => SelectableText(
-                            widget.storeName == '_'
-                                ? 'Carrinho da loja:'
-                                : '${widget.storeName}:',
+                            widget.storeName == ' '
+                                ? 'Carrinho da loja: ${appController.name}'
+                                : '${appController.name}:',
                             style: TextStyle(
                               fontWeight: FontWeight.w800,
                               height: 1.1,

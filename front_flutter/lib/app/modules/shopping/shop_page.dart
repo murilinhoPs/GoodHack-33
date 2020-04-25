@@ -33,7 +33,6 @@ class _ShopPageState extends ModularState<ShopPage, ShopController> {
         double subtitleSize = size.isMobile ? 18 : 26;
 
         return Scaffold(
-          key: appController.scaffoldKeyS,
           drawer: size.isMobile ? NavDrawer('/loja') : null,
           appBar: PreferredSize(
             preferredSize: Size.fromHeight(size.screenSize.height * 0.07),

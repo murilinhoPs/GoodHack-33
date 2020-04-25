@@ -27,7 +27,7 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
 
     return ResponsiveBuilder(
       builder: (context, size) => Scaffold(
-        key: appController.scaffoldKeyH,
+        // key: appController.scaffoldKeyH,
         drawer: size.isMobile ? NavDrawer('/') : null,
         appBar: PreferredSize(
           preferredSize: Size.fromHeight(size.screenSize.height * 0.07),
